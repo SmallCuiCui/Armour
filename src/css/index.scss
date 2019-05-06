@@ -1,0 +1,162 @@
+@import "module/base.scss";
+@import "module/header.scss";
+@import "module/footer.scss";
+
+.whiteBtn{
+	width:140px;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	font-size:16px;
+	border:1px solid white;
+	color:white;
+	transition:all 0.5s;
+
+	&:hover{
+		background-color:white;
+		color:nth($color,1);
+	}
+}
+
+.blackBtn{
+	width:140px;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	font-size:16px;
+	border:1px solid nth($color,1);
+	color:nth($color,1);
+	transition:all 0.5s;
+
+	&:hover{
+		background-color:nth($color,1);
+		color:white;
+	}
+}
+
+.banner{
+	height:560px;
+	width:100%;
+	overflow:hidden;
+	position:relative;
+
+	ul{
+		height:560px;
+		width:100%;
+
+		li{
+			position:absolute;
+			top:0;
+			left:0;
+
+			img{
+				height:560px;
+			}
+
+			&:nth-child(3){
+
+				.banner_btn{
+					position:absolute;
+					overflow:hidden;
+					bottom:62px;
+					left:50%;
+					a{
+						float:left;
+						background-color:white;
+						color:nth($color,1);
+						margin-right:20px;
+					}
+				}
+				
+			}
+		}
+	}
+}
+.newShow{
+	height:270px;
+	width:100%;
+	text-align:center;
+	color:nth($color,1);
+
+	p{
+		font-size:24px;
+		margin-top:42px;
+	}
+
+	h5{
+		height:80px;
+		line-height:80px;
+		font-size:48px;
+	}
+
+	div{
+		width:700px;
+		margin:0 auto;
+		margin-top:40px;
+		
+		display:flex;
+		justify-content: space-between;
+
+		a{
+			border:2px solid nth($color,1);
+		}
+	}
+}
+
+.solo{
+	height:550px;
+
+	div{
+		width:50%;
+		height:100%;
+		float:left;
+		position:relative;
+
+		dl{
+			width:100%;
+			height:100%;
+			dt{
+				overflow:hidden;
+				&:hover{
+					opacity:0.8;
+				}
+
+				img{
+					height:420px;
+				}
+				
+			}
+
+			dd{
+				text-align:center;
+				h5{
+					font-size:26px;
+					margin-top:22px;
+					margin-bottom:8px;
+				}
+				p{
+					color:nth(&color,2);
+					font-size:16px;
+				}
+			}
+		}
+
+		.solo_btn{
+			position:absolute;
+			top:210px;
+			left:40%;
+			width:136px;
+			height:48px;
+			line-height:48px;
+			text-aligin:center;
+			color: white;
+			border:1px solid white;
+			transition:all 0.5s;
+
+			&:hover{
+				color:nth($color,1);
+				background-color:white;
+			}
+		}
+	}
+}

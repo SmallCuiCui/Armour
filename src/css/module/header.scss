@@ -1,0 +1,129 @@
+$color:#1d1d1d #c7c7c7;
+$font-size:12px 14px 17px 18px 20px 24px;
+
+.header-top{
+
+	font-size:nth($font-size,2);
+	color:white;
+	background-color: nth($color,1);
+	height:34px;
+	display:flex;
+
+	li{
+		line-height:34px;
+		padding:0 30px;
+
+		a{
+			color:white;
+
+			i{
+				font-size:nth($font-size,4);
+				padding:0 5px;
+			}
+		}
+	}
+	li:nth-child(1){
+		flex:1;
+	}
+
+}
+nav{
+	height:60px;
+	overflow:hidden;
+
+	.logo{
+		height:60px;
+		width:60px;
+		float:left;
+		img{
+			width:60px;
+		}
+	}
+
+	.nav{
+		float:left;
+		height:60px;
+		font-size:nth($font-size,3);
+
+		li{
+			height:60px;
+			float:left;
+			line-height:60px;
+			font-size:nth($font-size,4);
+			margin-left:40px;
+
+			a{
+				color:nth($color,1);
+			}
+		}
+	}
+
+	.nav-right{
+		float:right;
+		height:36px;
+		font-size:nth($font-size,1);
+		margin-top:12px;
+		margin-right:20px;
+		overflow:hidden;
+
+		li{
+			margin-right:36px;
+			height:36px;
+			line-height:36px;
+			float:left;
+
+			&:nth-child(1){
+				height:34px;
+				border:1px solid nth($color,2);
+
+				i{
+					padding:0 10px;
+					font-size:nth($font-size,5);
+				}
+				
+				input{
+					width:70px;
+					border:none;
+					margin-left:10px;
+					transition:width 1s;
+					
+				}
+				&:hover input{
+					width:170px;
+				}
+			}
+			&:nth-child(2){
+
+				a{
+					padding:0 8px;
+					color:nth($color,1);
+
+					i{
+						font-size:nth($font-size,5)
+					}
+
+					&:nth-child(1){
+						padding:0;
+					}
+					&:nth-child(3){
+						padding-right:0;
+					}
+
+
+				}
+			}
+			&:nth-child(3){
+				margin-right:10px;
+				a{
+					padding-right: 8px;
+					color:nth($color,1);
+
+					i{
+						font-size:nth($font-size,5)
+					}
+				}
+			}
+		}
+	}
+
+}
