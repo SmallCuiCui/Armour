@@ -3,6 +3,9 @@ require.config({
 	paths:{
 		"header":"js/module/header",
 		"footer":"js/module/footer",
-		"tools":"libs/tools"
+		"tools":"libs/tools",
+		"url":"js/module/url",
+		"jquery":"libs/jquery/jquery-3.2.1",
+		"template":"libs/art-template/template-web"
 	}
 })

@@ -51,11 +51,6 @@ gulp.task("libs",()=>{
 	.pipe(gulp.dest('dist/libs'));
 });
 
-gulp.task("font",()=>{
-	gulp.src('src/font/**/*')
-	.pipe(gulp.dest('dist/font'));
-});
-
 //images任务
 gulp.task('images',()=>{
 	gulp.src('src/images/**/*')
@@ -80,4 +75,4 @@ gulp.task('watch',()=>{
 })
 
 //任务集中在default执行
-gulp.task('default',['html','css','js','libs','font','images','server','watch']);
+gulp.task('default',['html','css','js','libs','images','server','watch']);

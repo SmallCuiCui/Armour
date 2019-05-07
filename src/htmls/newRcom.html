@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>新品推荐</title>
+
+	<link rel="stylesheet" type="text/css" href="/libs/font/iconfont.css">
+	<link rel="stylesheet" type="text/css" href="/css/newRcom.css">
+</head>
+<body>
+	<header></header>
+
+   	<!-- 商品筛选区 -->
+	<div class="selectBox">
+		<h5>全部新品推荐<span><font>154</font>件商品</span></h5>
+		<!-- 页面导航展示 -->
+		<ul class="pageNav">
+			<li><a href="/">首页</a>/</li>
+			<li><a href="/">新品推荐</a>/</li>
+			<li><a href="/">全部新品推荐</a></li>
+		</ul>
+
+		<!-- 选择的标签展示 -->
+		<ul class="labelBox">
+			<li>新品推荐<i class="iconfont icon-X-copy"></i></li>
+			<li>清除所有选项</li>
+		</ul>
+
+		<ul class="shopNav">
+			<li>
+				<span>商品分类<i class="iconfont icon-sort-down"></i></span>
+				<font style="display: block;"></font>
+				<ol style="display: block;">
+					<li>男子新品推荐<i class="iconfont icon-sort-down"></i></li>
+					<li>女子新品推荐<i class="iconfont icon-sort-down"></i></li>
+					<li>少年新品推荐<i class="iconfont icon-sort-down"></i></li>
+					<li>全部新品推荐<i class="iconfont icon-sort-down"></i></li>
+				</ol>
+			</li>
+			<li>
+				<span>剪裁<i class="iconfont icon-sort-down"></i></span>
+				<ol>
+					<li>强力伸缩型(<span></span>)</li>
+					<li>修身型(<span></span>)</li>
+					<li>宽松型(<span></span>)</li>
+				</ol>
+			</li>
+			<li>
+				<span>适合运动<i class="iconfont icon-sort-down"></i></span>
+				<ol>
+					<li>训练(<span></span>)</li>
+					<li>跑步(<span></span>)</li>
+					<li>高尔夫(<span></span>)</li>
+					<li>户外(<span></span>)</li>
+					<li>篮球(<span></span>)</li>
+					<li>足球(<span></span>)</li>
+				</ol>
+			</li>
+			<li>
+				<span>颜色<i class="iconfont icon-sort-down"></i></span>
+				<ol>
+					<li><span></span>黑色</li>
+					<li><span></span>白色</li>
+					<li><span></span>灰色</li>
+					<li><span></span>蓝色</li>
+					<li><span></span>深蓝色</li>
+					<li><span></span>绿色</li>
+					<li><span></span>红色</li>
+					<li><span></span>棕色</li>
+					<li><span></span>橙色</li>
+					<li><span></span>黄色</li>
+				</ol>
+			</li>
+			<li>
+				<span>价格区间<i class="iconfont icon-sort-down"></i></span>
+				<ol>
+					<li>￥0-￥200(<span></span>)</li>
+					<li>￥200-￥400(<span></span>)</li>
+					<li>￥400-￥600(<span></span>)</li>
+					<li>￥600以上(<span></span>)</li>
+				</ol>
+			</li>
+			<li><span>新品推荐</span></li>
+			<li><span>热卖商品</span></li>
+			<li>
+				<span>排序<i class="iconfont icon-sort-down"></i></span>
+				<ol>
+					<li>默认综合排序</li>
+					<li>最新发布商品</li>
+					<li>销量重高到底</li>
+					<li>价格从低到高</li>
+					<li>价格从高到底</li>
+				</ol>
+			</li>
+		</ul>
+	</div>
+	<div class="main" id="mainWrap">
+		<script type="text/html" id="newlist-template">
+			{{each list item}}
+			<dl>
+				<dt><a href="javascript:;"><img src="{{item.image}}"></a></dt>
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<p><a href="javascript:;">{{item.shopName}}</a></p>
+				<span>{{item.price}}</span>
+			</dl>
+			{{/each}}
+		</script>
+	</div>
+
+	<footer></footer>
+	<script src="/libs/require/require.min.js" data-main="/js/newRcom.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+.footerTop{
+	height:64px;
+	width:100%;
+	border-top:4px solid nth($color,1);
+
+	.logoName{
+		float:left;
+		height:64px;
+		line-height:64px;
+		padding-left:15px;
+		img{
+			vertical-align: top;
+		}
+	}
+	ul{
+		float:right;
+		overflow:hidden;
+		li{
+			padding:0 10px;
+			font-size:12px;
+			float:left;
+			a{
+				color:nth($color,1);
+				i{
+					margin-right:8px;
+					font-size:20px;
+				}
+			}
+			
+		}
+	}
+}
+
+.footerCon{
+	height:290px;
+	overflow:hidden;
+	background-color:#f5f5f5;
+	position:relative;
+
+	.footWrap{
+		height:180px;
+		width:100%;
+		margin-top:32px;
+		margin-left:14px;
+
+		.wrapLeft{
+			float:left;
+			width:624px;
+			border-right:1px solid nth($color,2);
+
+			dl{
+				float:left;
+				width:50%;
+				
+				dt{
+					font-size:13px;
+					color:nth($color,1);
+					height:30px;
+				}
+				dd{
+					font-size:12px;
+					height:30px;
+					line-height:30px;
+					a{
+						color:#4c4c4c;
+					}
+				}
+
+			}
+		}
+		.wrapRight{
+			float:right;
+			margin-right:15px;
+			width:386px;
+
+			h5{
+				font-size:14px;
+				color:nth($color,1);
+			}
+			.search{
+				width:384px;
+				border:1px solid nth($color,1);
+				height:38px;
+				line-height:38px;
+				margin-top:24px;
+				margin-bottom:30px;
+				overflow:hidden;
+				font-size:12px;
+
+				input{
+					border:none;
+					height:38px;
+					width:300px;
+					padding-left:16px;
+					box-sizing:border-box;
+					vertical-align:top;
+				}
+
+				a{
+					float:right;
+					width:84px;
+					height:38px;
+					line-height:38px;
+					color:white;
+					text-align:center;
+					background-color:nth($color,1);
+				}
+
+			}
+			.attention{
+				p{
+					font-size:14px;
+					margin-bottom:18px;
+				}
+
+				div{
+					a{
+						font-size:30px;
+						color:red;
+					}
+				}
+			}
+		}
+	}
+
+	.footerBtom{
+		width:100%;
+		position:absolute;
+		bottom:0;
+		left:0;
+		ul{
+			width:1000px;
+			margin:0 auto;
+			display:flex;
+			justify-content:space-between;
+			li{
+				padding:0 18px;
+				font-size:12px;
+				color:nth($color,2);
+				border-right:1px solid nth($color,2);
+
+				a{
+					color:nth($color,2);
+				}
+				&:last-child{
+					border:none;
+				}
+			}
+		}
+	}
+}

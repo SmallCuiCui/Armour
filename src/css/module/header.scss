@@ -1,4 +1,4 @@
-$color:#1d1d1d #c7c7c7;
+$color:#1d1d1d #c7c7c7 #ea0002;
 $font-size:12px 14px 17px 18px 20px 24px;
 
 .header-top{
@@ -8,7 +8,7 @@ $font-size:12px 14px 17px 18px 20px 24px;
 	background-color: nth($color,1);
 	height:34px;
 	display:flex;
-
+	
 	li{
 		line-height:34px;
 		padding:0 30px;
@@ -29,7 +29,7 @@ $font-size:12px 14px 17px 18px 20px 24px;
 }
 nav{
 	height:60px;
-	overflow:hidden;
+	position:relative;
 
 	.logo{
 		height:60px;
@@ -45,16 +45,152 @@ nav{
 		height:60px;
 		font-size:nth($font-size,3);
 
-		li{
+		>li{
 			height:60px;
 			float:left;
 			line-height:60px;
 			font-size:nth($font-size,4);
 			margin-left:40px;
+			
 
 			a{
 				color:nth($color,1);
 			}
+			&:hover{
+				border-bottom:2px solid nth($color,3);
+				>a{
+					color:nth($color,3);
+				}
+			}
+			.navHover{
+				position:absolute;
+				top:60px;
+				left:0;
+				z-index:10;
+				width:100%;
+				background-color:white;
+				padding-top:20px;
+				padding-bottom:40px;
+				//display:flex;
+				display:none;
+
+				.navWarp{
+					margin-left:100px;
+					display:flex;
+					justify-content:space-between;
+					ul{
+						margin-right:20px;
+						min-width:80px;
+						li{
+							width:100%;
+							font-size:12px;
+							height:20px;
+							line-height:20px;
+							margin-bottom:20px;
+
+							&:hover a{
+								color:nth($color,3);
+							}
+							&:first-child{
+								font-size:16px;
+							}
+						}
+					}
+				}
+
+				.imgWrap{
+					flex:1;
+					margin-right:20px;
+					display:flex;
+					flex-wrap:wrap;
+					dl{
+						flex:1;
+						max-width:220px;
+						min-width:25%;
+						margin-left:30px;
+						margin-bottom:10px;
+						dt{
+							position:relative;
+							overflow:hidden;
+							width:100%;
+							//height:150px;
+							a{
+								img{
+									width:100%;
+								}
+							}
+							.btn{
+								position:absolute;
+								top:0;
+								left:0;
+								bottom:0;
+								right:0;
+								margin:auto;
+								opacity:0;
+							}
+						}
+						dd{
+							font-size:16px;
+							height:20px;
+							line-height:20px;
+							text-align:center;
+							color:nth($color,1);
+							margin-top:-10px;
+						}
+						&:hover{
+							opacity:.9;
+						}
+						&:hover .btn{
+							opacity:1;
+							transition:all 0.5s;
+						}
+						
+					}
+				}
+			}
+			&:hover .navHover{
+				display:flex;
+			}
+			.hot{
+				.imgWrap{
+					flex-wrap:nowrap;
+					dl{
+						min-width:0;
+					}
+				}
+			}
+
+			.man,.woman,.child{
+				.navWarp{
+					ul{
+						li{
+							margin-bottom:10px;
+						}
+					}
+				}
+				.imgWrap{
+					margin-right:100px;
+					dl{
+						font-size:12px;
+					}
+				}
+			}
+			.child{
+				.navWarp{
+					width:500px;
+				}
+			}
+			.brand{
+				.imgWrap{
+					justify-content:center;
+					dl{
+						max-width:150px;
+					}
+					
+
+				}
+			}
+
 		}
 	}
 

@@ -5,7 +5,7 @@ define(["tools"],tools =>{
 			this.load();
 		}
 		load(){
-			tools.ajaxGetPromise("htmls/module/footer.html",null,false).then(html =>{
+			tools.ajaxGetPromise("/htmls/module/footer.html",null,false).then(html =>{
 				this.container.innerHTML = html;
 			})
 		}

@@ -2,34 +2,37 @@
 @import "module/header.scss";
 @import "module/footer.scss";
 
-.whiteBtn{
+
+.whiteBtn,.blackBtn{
 	width:140px;
 	height:50px;
 	line-height:50px;
 	text-align:center;
 	font-size:16px;
-	border:1px solid white;
-	color:white;
 	transition:all 0.5s;
+}
+.btnSmall{
+	width:100px;
+	height:30px;
+	line-height:30px;
+}
 
+.whiteBtn{
+	border:1px solid white;
+	color:white !important;
+	
 	&:hover{
 		background-color:white;
-		color:nth($color,1);
+		color:nth($color,1) !important;
 	}
 }
 
 .blackBtn{
-	width:140px;
-	height:50px;
-	line-height:50px;
-	text-align:center;
-	font-size:16px;
 	border:1px solid nth($color,1);
-	color:nth($color,1);
-	transition:all 0.5s;
+	color:nth($color,1) !important;
 
 	&:hover{
-		background-color:nth($color,1);
+		background-color:nth($color,1) !important;
 		color:white;
 	}
 }
@@ -57,13 +60,12 @@
 
 				.banner_btn{
 					position:absolute;
+					z-index:1;
 					overflow:hidden;
 					bottom:62px;
 					left:50%;
 					a{
 						float:left;
-						background-color:white;
-						color:nth($color,1);
 						margin-right:20px;
 					}
 				}
@@ -141,22 +143,126 @@
 			}
 		}
 
+
 		.solo_btn{
 			position:absolute;
 			top:210px;
 			left:40%;
-			width:136px;
-			height:48px;
-			line-height:48px;
-			text-aligin:center;
-			color: white;
-			border:1px solid white;
-			transition:all 0.5s;
+			opacity:0;
 
 			&:hover{
 				color:nth($color,1);
 				background-color:white;
 			}
 		}
+		&:hover .solo_btn{
+			opacity:1;
+			transition: all 0.5s;
+		}
+	}
+}
+
+.kuli{
+	width:100%;
+	.imgWrap{
+		height:100%;
+		position:relative;
+		a{
+			img{
+				height:414px;
+				
+			}
+		}
+		&:hover{
+			opacity:0.9;
+		}
+
+		.kuliBtn{
+			position:absolute;
+			bottom:54px;
+			left:45%;
+			opacity:0;
+		}
+	}
+
+	h5{
+		height:108px;
+		line-height:70px;
+		text-align:center;
+		font-size:30px;
+		cursor:pointer;
+		a{
+			color:nth($color,1);
+		}
+	}
+
+	&:hover .kuliBtn{
+		opacity:1;
+		transition:all 0.5s;
+	}
+}
+
+.modo{
+	width:100%;
+	height:456px;
+	display:flex;
+	overflow:hidden;
+	justify-content:space-between;
+
+	dl{
+		width:32%;
+		height:100%;
+		
+		dt{
+			height:276px;
+			width:100%;
+			overflow:hidden;
+			position:relative;
+			img{
+				height:276px;
+			}
+
+			.modoBtn{
+				position:absolute;
+				left:0;
+				top:0;
+				right:0;
+				bottom:0;
+				margin:auto;
+				opacity:0;
+			}
+
+			&:hover{
+				opacity:.9;
+			}
+
+		}
+		h5{
+			height:50px;
+			line-height:50px;
+			margin-top:10px;
+			text-align:center;
+			font-size:30px;
+			cursor:pointer;
+
+			a{
+				color:nth($color,1);
+			}
+		}
+		dd{
+			font-size:16px;
+			text-align:center;
+			
+			a{
+				color:nth($color,2);
+			}
+		}
+
+		
+		&:hover .modoBtn{
+			opacity:1;
+			transition:all 0.5s;
+		}
+		
 	}
 }
