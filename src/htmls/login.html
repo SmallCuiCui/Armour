@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>登录</title>
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
+</head>
+<body>
+	<header></header>
+
+	<div class="wrap">
+		<div class="wrapLeft">
+			<h5>会员登录</h5>
+			<form name="login" id="loginForm">
+				<input type="text" name="users" placeholder="邮箱/手机" id="inputUser">
+				<p id="userPoint">请输入有效的用户名或密码</p>
+				<input type="password" name="paw" placeholder="密码" id="inputPsw">
+				<p id="pswPoint">8-16个字符，必须包含英文、数字、字符中的两种</p>
+				<div>
+					<input type="checkbox" name="check">记住我
+					<a href="javascript:;">忘记密码</a>
+				</div>
+
+				<a href="javascript:;" class="btnLogin btn" id="btnLogin">立即登录</a>
+			</form>
+		</div>
+		<div class="wrapRight">
+			<h5>会员注册</h5>
+			<p>注册成为UA官网会员即可:</p>
+			<ul>
+				<li>第一时间获得我们的最新产品和活动资讯</li>
+				<li>享有更全面的售后服务</li>
+				<li>有机会参与我们的会员回馈活动</li>
+			</ul>
+
+			<a href="javascript:;" class="btn regBtn">立即注册</a>
+		</div>
+	</div>
+
+	<footer></footer>
+
+	<script src="/libs/require/require.min.js" data-main = "/js/login.js" ></script>
+</body>
+</html>

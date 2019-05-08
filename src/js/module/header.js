@@ -1,14 +1,16 @@
+
 //header模块
-define(["tools"],tools =>{
+define(["jquery"], $ =>{
 	class Header{
 		constructor(){
-			this.container = document.querySelector("header");
+			this.container = $("header");
 			this.load();
 		}
 		load(){
-			tools.ajaxGetPromise("/htmls/module/header.html",null,false).then(html =>{
+			/*tools.ajaxGetPromise("/htmls/module/header.html",null,false).then(html =>{
 				this.container.innerHTML = html;
-			})
+			})*/
+			this.container.load("/htmls/module/header.html");
 		}
 	}
 	return new Header();
