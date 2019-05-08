@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>男子装备</title>
+
+	<link rel="stylesheet" type="text/css" href="/css/mans.css">
+</head>
+<body>
+	<header></header>
+
+	<div class="lunbo">
+		<ul>
+			<li>
+				<a href="javascript:;"><img src="../images/mans/lunbo1.jpg"></a>
+				<a href="javascript:;" class="blackBtn btn">立即购买</a>
+			</li>
+			<li>
+				<a href="javascript:;"><img src="../images/mans/lunbo2.jpg"></a>
+				<a href="javascript:;" class="whiteBtn btn">立即购买</a>
+			</li>
+
+			<ol>
+				<li id="first" class="white"></li>
+				<li id="second" class="black"></li>
+			</ol>
+		</ul>
+
+	</div>
+
+	<div class="recommand">
+		<h4>推荐商品</h4>
+		<div>
+			<div id="leftBtn" class="leftBtn"><i class="iconfont ">1</i></div>
+			<!-- 推荐商品模板容器 -->
+			<div class="showWrap" id="showWrap">
+
+			</div>
+			<!-- 推荐商品模板 -->
+			<script type="text/html" id="recommandShop">
+				{{each list item}}
+				<dl>
+					<dt><a href="javascript:;"><img src="{{item.image}}"></a></dt>
+					<dd>{{item.name}}</dd>
+					<dd>{{item.price}}</dd>
+					<a href="javascript:;" class="blackBtn">立即购买</a>
+				</dl>
+				{{/each}}
+			</script>
+
+			<div id="rightBtn" class="rightBtn"><i class="iconfont ">1</i></div>
+		</div>
+	</div>
+
+	<div class="towmodo" id="towmodoWrap"></div>
+	<!-- //单个双模块模板 -->
+	<script type="text/html" id="towmodo">
+		{{each list item}}
+		<dl>
+			<dt><a href="javascript:;"><img src="{{item.image}}"></a></dt>
+			<dd class="bigName">{{item.name}}</dd>
+			<dd class="smallName">{{item.smallName}}</dd>
+
+		</dl>
+		{{/each}}
+	</script>
+	
+	<div class="towmodo" id="threemodoWrap"></div>
+	<!-- //三个模块模板 -->
+	<script type="text/html" id="threemodo">
+		{{each list item}}
+		<dl>
+			<dt><a href="javascript:;"><img src="{{item.image}}"></a></dt>
+			<dd class="bigName">{{item.name}}</dd>
+			<dd class="smallName">{{item.smallName}}</dd>
+
+		</dl>
+		{{/each}}
+	</script>
+
+
+	<footer></footer>
+
+	<script type="text/javascript" src="/libs/require/require.min.js" data-main="/js/mans.js"></script>
+</body>
+</html>

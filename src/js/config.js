@@ -1,11 +1,12 @@
 require.config({
-	baseUrl:"/Armour/dist",//此处表示根目录
+	baseUrl:"/",//此处表示根目录
 	paths:{
 		"header":"js/module/header",
 		"footer":"js/module/footer",
 		"tools":"libs/tools",
 		"url":"js/module/url",
 		"jquery":"libs/jquery/jquery-3.2.1",
-		"template":"libs/art-template/template-web"
+		"template":"libs/art-template/template-web",
+		"cookie":"libs/jquery-plugins/jquery.cookie"
 	}
 })

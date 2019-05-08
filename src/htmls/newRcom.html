@@ -95,22 +95,23 @@
 			</li>
 		</ul>
 	</div>
-	<div class="main" id="mainWrap">
-		<script type="text/html" id="newlist-template">
-			{{each list item}}
-			<dl>
-				<dt><a href="javascript:;"><img src="{{item.image}}"></a></dt>
-				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
-				</ul>
-				<p><a href="javascript:;">{{item.shopName}}</a></p>
-				<span>{{item.price}}</span>
-			</dl>
-			{{/each}}
-		</script>
-	</div>
+	<div class="main" id="mainWrap"></div>
+	
+	<script type="text/html" id="newlist-template">
+		{{each list item}}
+		<dl>
+			<dt><a href="javascript:;"><img src="{{item.image}}"></a></dt>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<p><a href="javascript:;">{{item.shopName}}</a></p>
+			<span>{{item.price}}</span>
+		</dl>
+		{{/each}}
+	</script>
+	
 
 	<footer></footer>
 	<script src="/libs/require/require.min.js" data-main="/js/newRcom.js"></script>

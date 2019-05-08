@@ -1,6 +1,41 @@
 $color:#1d1d1d #c7c7c7 #ea0002;
 $font-size:12px 14px 17px 18px 20px 24px;
 
+.whiteBtn,.blackBtn{
+	display:block;
+	width:140px;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	font-size:16px;
+	transition:all 0.5s;
+}
+.btnSmall{
+	width:100px;
+	height:30px;
+	line-height:30px;
+}
+
+.whiteBtn{
+	border:1px solid white;
+	color:white !important;
+	
+	&:hover{
+		background-color:white;
+		color:nth($color,1) !important;
+	}
+}
+
+.blackBtn{
+	border:1px solid nth($color,1);
+	color:nth($color,1) !important;
+
+	&:hover{
+		background-color:nth($color,1) !important;
+		color:white !important;
+	}
+}
+
 .header-top{
 
 	font-size:nth($font-size,2);
@@ -221,7 +256,7 @@ nav{
 					width:70px;
 					border:none;
 					margin-left:10px;
-					transition:width 1s;
+					transition:width 0.5s;
 					
 				}
 				&:hover input{

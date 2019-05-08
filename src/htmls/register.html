@@ -2,11 +2,71 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<title>注册</title>
+
+	<link rel="stylesheet" type="text/css" href="/libs/font/iconfont.css">
+	<link rel="stylesheet" type="text/css" href="/css/register.css">
 </head>
 <body>
 	<header></header>
-	<div>主体</div>
+	<div class="main">
+		<div class="wrap">
+			<h5>会员注册</h5>
+			<form name="register">
+				<ul>
+					<li>
+						<h6>邮箱</h6>
+						<input type="text" id="inputEmail" placeholder="请输入邮箱">
+						<p id="emailPiont">邮箱格式不正确，请重新输入</p>
+					</li>
+					<li>
+						<h6>手机号码</h6>
+						<input type="text" id="inputPhone" placeholder="完成注册后，可通过电话号码登录和找回密码">
+						<p id="phonePiont">手机号码格式不正确，请重新输入</p>
+					</li>
+					<li>
+						<h6>密码</h6>
+						<input type="password" id="inputPsw" placeholder="8-16个字符，必须包含英文、数字、字符中的两种">
+						<p id="pswPiont">8-16个字符，必须包含英文、数字、字符中的两种</p>
+					</li>
+					<!-- <li>
+						<h6>图片验证码</h6>
+						<input type="text" name="userEmail">
+						<p>邮箱格式不正确，请重新输入</p>
+					</li> -->
+					<li>
+						<h6>确认密码</h6>
+						<input type="password" id="againPsw" placeholder="请再次输入密码">
+						<p id="apswPiont">两次密码不一致</p>
+					</li>
+					<!-- <li>
+						<h6>手机验证码</h6>
+						<input type="text" name="userEmail" placeholder="手机验证码">
+						<p>请输入手机验证码</p>
+					</li> -->
+
+					<div>
+						<a href="javascript:;" id="agree1"><i class="iconfont icon-zhengque ischeck"></i></a>我愿意接受来自UA中国官方商城的活动邮件和短信
+					</div>
+
+					<div>
+						<a href="javascript:;" id="agree2"><i class="iconfont icon-zhengque ischeck"></i></a>我已阅读并同意
+						<a href="javascript:;" class="rule">《网站使用规则》</a>
+					</div>
+
+					<li class="registerBtn btn" id="registerBtn">立即注册</li>
+					<li>
+						已有账户？<a href="/htmls/login.html">立即登录</a>
+					</li>
+				</ul>
+				
+
+				
+			</form>
+		</div>
+	</div>
 	<footer></footer>
+	<script src="/libs/require/require.min.js" data-main = "/js/register.js"></script>
 </body>
 </html>

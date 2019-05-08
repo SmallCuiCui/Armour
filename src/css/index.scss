@@ -3,39 +3,6 @@
 @import "module/footer.scss";
 
 
-.whiteBtn,.blackBtn{
-	width:140px;
-	height:50px;
-	line-height:50px;
-	text-align:center;
-	font-size:16px;
-	transition:all 0.5s;
-}
-.btnSmall{
-	width:100px;
-	height:30px;
-	line-height:30px;
-}
-
-.whiteBtn{
-	border:1px solid white;
-	color:white !important;
-	
-	&:hover{
-		background-color:white;
-		color:nth($color,1) !important;
-	}
-}
-
-.blackBtn{
-	border:1px solid nth($color,1);
-	color:nth($color,1) !important;
-
-	&:hover{
-		background-color:nth($color,1) !important;
-		color:white;
-	}
-}
 
 .banner{
 	height:560px;
