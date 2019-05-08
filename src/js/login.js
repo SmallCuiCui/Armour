@@ -37,37 +37,44 @@ require(["config"],() =>{
 			}
 			regPsw(){
 				this.psw = this.inputPsw.val();
-					let arr = [];
-					arr.push(/^.{8,16}$/.test(psw));
-					arr.push(/\d/.test(psw));
-					arr.push(/[a-zA-Z]/.test(psw));
-					arr.push(/[^0-9a-zA-Z]/.test(psw));
-					if(arr[0]){
-						if(arr[1] + arr[2] +arr[3] >= 2){
-							$("#pswPoint").hide();
-							this.regPass = true;
-						}else{
-							$("#pswPoint").show();
-							this.regPass = false;
-						}
-						
+				let arr = [];
+				arr.push(/^.{8,16}$/.test(psw));
+				arr.push(/\d/.test(psw));
+				arr.push(/[a-zA-Z]/.test(psw));
+				arr.push(/[^0-9a-zA-Z]/.test(psw));
+				if(arr[0]){
+					if(arr[1] + arr[2] +arr[3] >= 2){
+						$("#pswPoint").hide();
+						this.regPass = true;
 					}else{
 						$("#pswPoint").show();
 						this.regPass = false;
 					}
+
+				}else{
+					$("#pswPoint").show();
+					this.regPass = false;
+				}
 			}
 
 			login(){
-
+				if(this.regPass){//用户与密码正则验证通过才进行登录请求
+					//请求php
+					$.ajax({
+						url: '/api/login.php',
+						type: 'POST',
+						dataType: 'json',
+						success:data=>{
+							connsole.log(data);
+						}
+					});
+					
+				}else{
+					return;
+				}
 			}
 		}
 
-		new Login(){
-			if(this.regPass){//用户与密码正则验证通过才进行登录请求
-				
-			}else{
-				return;
-			}
-		}
+		new Login();
 	})
 })
