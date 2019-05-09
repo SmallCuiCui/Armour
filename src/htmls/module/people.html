@@ -1,0 +1,54 @@
+
+	<div class="recommand">
+		<h4>推荐商品</h4>
+		<div>
+			<div id="leftBtn" class="leftBtn"><i class="iconfont ">1</i></div>
+			
+
+			<!-- 推荐商品模板容器 -->
+			<div class="showWrap" id="showWrap"> </div>
+			<!-- 推荐商品模板 -->
+			<script type="text/html" id="recommandShop">
+				{{each list item}}
+				<dl>
+					<dt><a href="javascript:;"><img src="{{item.image}}"></a></dt>
+					<dd>{{item.name}}</dd>
+					<dd>{{item.price}}</dd>
+					<a href="javascript:;" class="blackBtn">立即购买</a>
+				</dl>
+				{{/each}}
+			</script>
+
+			<div id="rightBtn" class="rightBtn"><i class="iconfont ">1</i></div>
+		</div>
+	</div>
+
+
+	<!-- //单个双模块模板 -->
+	<div class="towmodo" id="towmodoWrap"></div>
+	
+	<script type="text/html" id="towmodo">
+		{{each list item}}
+		<dl>
+			<dt><a href="javascript:;"><img src="{{item.image}}"></a></dt>
+			<dd class="bigName">{{item.name}}</dd>
+			<dd class="smallName">{{item.smallName}}</dd>
+
+		</dl>
+		{{/each}}
+	</script>
+	
+
+	<!-- //三个模块模板 -->
+	<div class="towmodo" id="threemodoWrap"></div>
+	
+	<script type="text/html" id="threemodo">
+		{{each list item}}
+		<dl>
+			<dt><a href="javascript:;"><img src="{{item.image}}"></a></dt>
+			<dd class="bigName">{{item.name}}</dd>
+			<dd class="smallName">{{item.smallName}}</dd>
+
+		</dl>
+		{{/each}}
+	</script>

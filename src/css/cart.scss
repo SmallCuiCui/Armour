@@ -1,0 +1,220 @@
+@import "module/base.scss";
+@import "module/header.scss";
+@import "module/shopDis.scss";
+
+
+.shopWrap{
+	width:98%;
+	margin:0 auto;
+
+	.noGoods{
+		display:none;
+		text-align:center;
+		padding-top:50px;
+		padding-bottom:80px;
+		border-top:1px solid #c7c7c7;
+
+		h5{
+			font-size:24px; 
+			font-weight:normal;
+			margin-bottom:40px;
+		}
+		i{
+			font-size:60px;
+			color:#c7c7c7;
+		}
+	}
+
+	.shopList{
+		
+		table{
+			width:100%;
+			font-size:16px;
+			color:#1d1d1d;
+			table-layout:fiexed;
+			margin-top:30px;
+			border-collapse:collapse;
+			thead{
+				background-color:#eeeeee;
+				text-align:center;
+				tr{
+					height:50px; 
+					line-height:50px;
+					td{
+						input{
+							margin-right:16px;
+						}
+						&:nth-child(1){
+							width:5%;
+							text-align: right;
+						}
+						&:nth-child(2){
+							text-align: left;
+						}
+					}
+				}
+			}
+			tbody{
+				tr{
+					border-bottom:1px solid #eeeeee;
+					height:172px;
+					width:100%;
+					td{
+						padding-top:30px;
+						padding-bottom:20px;
+						height:152px;
+						text-align:center;
+						img{
+							width:130px;
+							height:172px;
+							margin-right:20px;
+						}
+						&:nth-child(1){
+							width:5%;
+							text-align: right;
+							vertical-align:top;
+							input{
+								margin-right: 16px;
+							}
+						}
+						
+						&:nth-child(2){
+							width:47%;
+							margin-right:16px;
+							text-align:left;
+							vertical-align:top;
+							
+
+							div{
+								vertical-align:top;
+								display:inline-block;
+								overflow:hidden;
+
+								p{
+									line-height:24px;
+									margin-bottom:12px;
+									a{
+										color:#1d1d1d;
+									}
+									span{
+										margin-right:20px;
+									}
+									&:last-child{
+										font-size:14px;
+									}
+								}
+								div{
+									display:none;
+									ul{
+									float:left;
+									width:120px;
+									height:40px;
+									overflow:hidden;
+									border:1px solid #eeeeee;
+									margin-right:20px;
+									padding-left:20px;
+									li{
+										display:flex;
+										align-items:center;
+										
+										div{
+											width:20px;
+											height:20px;
+											margin-right:15px;
+											border:1px solid #1d1d1d;
+										}
+										height:40px;
+										line-hegiht:40px;
+									}
+								}
+								}
+							}
+						}
+
+						&:last-child{
+							a{
+								color:#1d1d1d;
+								text-decoration:underline;
+								display:block;
+								margin-bottom:20px;
+
+								&#okBtn{
+									display:none;
+								}
+							}
+						}
+						
+						
+					}
+
+					&.ac{
+						.coloeCheck{
+							display:inline-block;
+						}
+						#okBtn{
+							display:block;
+						}
+						#editBtn{
+							display:none;
+						}
+					}
+				}
+				
+			}
+		}
+	}
+
+
+
+	// 购物车下面与推荐商品之间的分隔线
+	.lineBox{
+		display:flex;
+		height:60px;
+
+		.center{
+			display:flex;
+			align-items:center;
+			li{
+				height:24px;
+				line-height:24px;
+				display:flex;
+				padding:0 35px;
+
+				a{
+					display:inline-block;
+					height:58px;
+					line-height:58px;
+					margin-top:-17px;
+					color:#1d1d1d;
+				}
+				&:first-child a{
+					
+					border-bottom:4px solid #ea212e;
+				}
+				&:first-child{
+					border-right:1px solid #c7c7c7;
+				}
+				
+
+				&.ac{
+					a{
+						color:#ea212e;
+					}
+				}
+				
+			}
+		}
+
+		>div{
+			flex:1;
+
+			display:flex;
+			align-items:center;
+			p{
+				width:100%;
+				height:6px;
+				background-color:#eeeeee;
+			}
+		}
+	}
+}

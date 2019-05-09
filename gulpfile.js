@@ -36,10 +36,10 @@ gulp.task('html',()=>{
 //js任务，取出js，ES6转换为ES5(babel） 压缩
 gulp.task("js",()=>{
 	gulp.src('src/js/**/*.js')
-		.pipe(babel({
-			presets:['@babel/env']
-		}))
-		.pipe(jsMini())
+		// .pipe(babel({
+		// 	presets:['@babel/env']
+		// }))
+		// .pipe(jsMini())
 		.pipe(gulp.dest('dist/js'))
 		.pipe(connect.reload());
 

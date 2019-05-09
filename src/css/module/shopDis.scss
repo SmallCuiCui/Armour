@@ -1,0 +1,45 @@
+.main{
+	display:flex;
+	padding:20px;
+	flex-wrap:wrap;
+	justify-content:space-between;
+	dl{
+		margin-bottom:40px;
+		dt{
+			img{
+				width:290px;
+				height:340px;
+			}
+		}
+		ul{
+			height:34px;
+			display:flex;
+			align-items:center;
+			li{
+				width:28px;
+				height:16px;
+				margin-right:10px;
+				&:nth-child(1){
+					background-color:red;
+				}
+				&:nth-child(2){
+					background-color:yellow;
+				}
+				&:nth-child(3){
+					background-color:blue;
+				}
+			}
+		}
+		p{
+			font-size:14px;
+			a{
+				color:#333333;
+			}
+		}
+		span{
+			font-size:14px;
+			color:#5a5a5a;
+		}
+	}
+}
+

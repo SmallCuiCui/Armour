@@ -3,6 +3,9 @@ require.config({
 	paths:{
 		"header":"js/module/header",
 		"footer":"js/module/footer",
+		"lunbo":"js/module/lunbo",
+		"people":"js/module/people",
+		"shopDis":"js/module/shopDis",
 		"tools":"libs/tools",
 		"url":"js/module/url",
 		"jquery":"libs/jquery/jquery-3.2.1",

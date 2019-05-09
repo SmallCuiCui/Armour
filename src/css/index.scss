@@ -1,46 +1,10 @@
 @import "module/base.scss";
 @import "module/header.scss";
 @import "module/footer.scss";
+@import "module/lunbo.scss";
 
 
 
-.banner{
-	height:560px;
-	width:100%;
-	overflow:hidden;
-	position:relative;
-
-	ul{
-		height:560px;
-		width:100%;
-
-		li{
-			position:absolute;
-			top:0;
-			left:0;
-
-			img{
-				height:560px;
-			}
-
-			&:nth-child(3){
-
-				.banner_btn{
-					position:absolute;
-					z-index:1;
-					overflow:hidden;
-					bottom:62px;
-					left:50%;
-					a{
-						float:left;
-						margin-right:20px;
-					}
-				}
-				
-			}
-		}
-	}
-}
 .newShow{
 	height:270px;
 	width:100%;

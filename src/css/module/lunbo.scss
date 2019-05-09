@@ -1,0 +1,56 @@
+
+.banner{
+	height:560px;
+	width:100%;
+
+	ul{
+		height:560px;
+		width:100%;
+		position:relative;
+		overflow:hidden;
+		>li{
+			position:absolute;
+			top:0;
+			left:1280px;
+			&.first{
+				left:0;
+			}
+
+			img{
+				position:absolute;
+				top:0;
+				left:0;
+				height:560px;
+			}
+
+			.btn{
+				position:absolute;
+				bottom:60px;
+				left:65%;
+			}
+		}
+
+		ol{
+			position:absolute;
+			width:100px;
+			height:40px;
+			bottom:34px;
+			left:45%;
+			z-index:10;
+			display:flex;
+			>li{
+				margin-right:10px;
+				margin-right:10px;
+				cursor:pointer;
+				i{
+					color:#666666;
+					font-size:35px;
+					
+				}
+				&.white i{
+					color:white !important;
+				}
+			}
+		}
+	}
+}

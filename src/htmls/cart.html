@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+	<title>购物车</title>
+
+	<link rel="stylesheet" type="text/css" href="/libs/font/iconfont.css">
+	<link rel="stylesheet" type="text/css" href="/css/cart.css">
+</head>
+<body>
+
+	<header>
+		
+		<!-- 头部顶的黑色信息栏 -->
+		<ul class="header-top">
+			<li>全场满199元免运费</li>
+			<li><a href="#"><i class="iconfont icon-dianhua"></i><span>4008-206-528</span></a></li>
+
+			<li><a href="#"><i class="iconfont icon-xinxiduanxinsixinduihua"></i><span>在线客服</span></a></li>
+
+			<li><a href="#"><i class="iconfont icon-dizhi"></i><span>线下门店</span></a></li>
+		</ul>
+
+		<!-- 导航 -->
+		<nav>
+			<div class="logo"><a href="/"><img src="/images/logo.jpg"></a></div>
+		</nav>
+
+	</header>
+
+	<div class="shopWrap">
+		<!-- 没有商品时显示 -->
+		<div class="noGoods">
+			<h5>您的购物车中没有商品</h5>
+			<i class="iconfont icon-gouwuche1"></i>
+		</div>
+
+		<div class="shopList">
+			<div>
+				<h5>购物车 </h5>
+				<p>已选中<span></span>件商品</p>
+			</div>
+
+			<table>
+				<thead>
+					<tr>
+						<td><input type="checkbox" name="" id="allBtn"></td>
+						<th>全选</th>
+						<th>商品信息</th>
+						<th>单价</th>
+						<th>数量</th>
+						<th>小计</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="edit">
+						<td><input type="checkbox" name="" class="checkBtns"></td>
+						<!-- 第一列商品信息基本展示 -->
+						<td colspan="2">
+							
+							<a href="javascript:;"><img src="/images/modo1.jpg"></a>
+							<div>
+								<p><a href="javascript:;">女士露脐短上衣</a></p>
+								<p>颜色:<span>蜜桃粉286</span>  <font>尺码:</font>S</p>
+								<div class="coloeCheck">
+									<!-- 选择颜色 -->
+									<ul>
+										<li>
+											<div></div>
+											<span>蜜桃粉</span>
+											<i class="iconfont "></i>
+										</li>
+										<li>
+											<div></div>
+											<span>蜜桃粉</span>
+											<i class="iconfont "></i>
+										</li>
+										<li>
+											<div></div>
+											<span>蜜桃粉</span>
+											<i class="iconfont "></i>
+										</li>
+									</ul>
+									<!-- 选择尺码 -->
+									<ul>
+										<li>
+											<div></div>
+											<span>蜜桃粉</span>
+											<i class="iconfont "></i>
+										</li>
+										<li>
+											<div></div>
+											<span>蜜桃粉</span>
+											<i class="iconfont "></i>
+										</li>
+										<li>
+											<div></div>
+											<span>蜜桃粉</span>
+											<i class="iconfont "></i>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</td>
+
+						<td>￥449.00</td>
+						<td>
+							<div>
+								<span><i class="iconfont "></i></span>
+								<font>1</font>
+								<span><i class="iconfont "></i></span>
+							</div>
+						</td>
+						<td>499.00</td>
+						<td>
+							<a href="javascript:;" id="delBtn">删除</a>
+							<a href="javascript:;" id="editBtn">编辑</a>
+							<a href="javascript:;" id="okBtn">确定</a>
+						</td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="lineBox">
+			<div class="line_left">
+				<p></p>
+			</div>
+			<ul class="center">
+				<li class="ac"><a href="javascript:;">猜你会喜欢</a></li>
+				<li><a href="javascript:;">最近浏览</a></li>
+			</ul>
+			<div class="line-right">
+				<p></p>
+			</div>
+		</div>
+
+		<!-- 购物车下推荐商品展示 -->
+		<div class="main" id="mainWrap"></div>
+		<script type="text/html" id="newlist-template">
+			{{each list item}}
+			<dl>
+				<dt><a href="javascript:;"><img src="{{item.image}}"></a></dt>
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<p><a href="javascript:;">{{item.shopName}}</a></p>
+				<span>{{item.price}}</span>
+			</dl>
+			{{/each}}
+		</script>
+
+	</div>
+
+
+	<script src="/libs/require/require.min.js" data-main = "/js/cart.js" ></script>
+</body>
+</html>

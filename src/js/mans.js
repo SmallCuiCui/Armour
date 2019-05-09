@@ -1,53 +1,58 @@
 require(["config"], () =>{
-	require(["url","template","header","footer"] ,(url,template,header,footer) =>{
+	require(["header","footer","lunbo","people","cookie"] ,(header,footer,lunbo,people) =>{
+		
+		//console.log(lunbo);
 		class Mans{
 			constructor(){
-				this.showWrap = $("#showWrap");
 
-				this.getData();
+				//获取存放的cookie来判断当前渲染的页面是男子，女子，还是少年
+				this.html = $.cookie("html");
+				this.setData();
+				
 			}
-			getData(){
-				$.ajax({
-					url:url.baseListUrl + "mans",
-					type:"get",
-					dataType:"json",
-					success: data =>{
 
-						if(data.res_code === 1){
-							let list = data.res_body.list;
-							$("#showWrap").html(template("recommandShop",{list}))
-						}
+			setData(){
+				switch(this.html){
+					case "mans":
+					this.data = {
+						bannerImg:["/images/people/man_bg1.jpg","/images/people/man_bg2.jpg"],//轮播图
+						reconmand:"mans",//推荐商品数据接口
+						peopleTow:"mansTow",//两个模块数据接口
+						peopleThree:"mansThree"//三个模块数据接口
 					}
-				})
+					break;
 
-				$.ajax({
-					url:url.baseListUrl + "mansTow",
-					type:"get",
-					dataType:"json",
-					success: data =>{
-
-						if(data.res_code === 1){
-							console.log(data.res_body.list);
-							let list = data.res_body.list;
-							$("#towmodoWrap").html(template("towmodo",{list}))
-						}
+					case "womans":
+					this.data = {
+						bannerImg:["/images/people/woman_bg1.jpg","/images/people/woman_bg2.jpg"],//轮播图
+						reconmand:"mans",//推荐商品数据接口
+						peopleTow:"mansTow",//两个模块数据接口
+						peopleThree:"mansThree"//三个模块数据接口
 					}
-				})
+					break;
 
-				$.ajax({
-					url:url.baseListUrl + "mansThree",
-					type:"get",
-					dataType:"json",
-					success: data =>{
-
-						if(data.res_code == 1){
-							console.log(data.res_body.list);
-							let list = data.res_body.list;
-							$("#threemodoWrap").html(template("threemodo",{list}))
-						}
+					case "child":
+					this.data = {
+						bannerImg:["/images/people/child_bg1.jpg","/images/people/child_bg2.jpg"],//轮播图
+						reconmand:"mans",//推荐商品数据接口
+						peopleTow:"mansTow",//两个模块数据接口
+						peopleThree:"mansThree"//三个模块数据接口
 					}
-				})
+					break;
+				}
+				this.load();
 			}
+
+			load(){
+				//渲染轮播
+				lunbo.render(this.data.bannerImg);
+
+				//渲染主体内容
+				
+				this.people = people;
+				this.people.render(this.data);
+			}
+			
 		}
 
 		new Mans();

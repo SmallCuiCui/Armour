@@ -1,0 +1,20 @@
+
+<!-- 轮播图模块 -->
+<script type="text/html" id="lunboModle">
+	<ul id="lunboUl">
+		{{each list item}}
+		<li class="imgWrap">
+			<a href="javascript:;"><img src="{{item}}"></a>
+			<a href="javascript:;" class="blackBtn btn">立即购买</a>		
+		</li>
+		{{/each}}
+
+		<ol id="list">
+			{{each list item}}
+			<li><i class="iconfont icon-yuandian"></i></li>
+			{{/each}}
+		</ol>
+
+	</ul>
+
+</script>
