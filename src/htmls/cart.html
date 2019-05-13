@@ -146,9 +146,9 @@
 			<dl>
 				<dt><a href="javascript:;"><img src="{{item.image}}"></a></dt>
 				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
+					{{each item.colors color}}
+					<li style="background-color: {{color}}"></li>
+					{{/each}}
 				</ul>
 				<p><a href="javascript:;">{{item.shopName}}</a></p>
 				<span>{{item.price}}</span>

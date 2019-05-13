@@ -1,6 +1,6 @@
 
 //header模块
-define(["jquery"], $ =>{
+define(["jquery","cookie"], $ =>{
 	class Header{
 		constructor(){
 			this.container = $("header");
@@ -9,6 +9,8 @@ define(["jquery"], $ =>{
 		load(){
 			this.container.load("/htmls/module/header.html", ()=>{
 				this.bindEvent();
+				//取得kooie，判断是否登录
+				this.showUser();
 			});
 		}
 		bindEvent(){
@@ -26,6 +28,24 @@ define(["jquery"], $ =>{
 				//设置页面mans,womans,child
 				$.cookie("html","child",{path:'/'});
 			})
+
+			//点击退出登录
+			$("#outLogin").on("click",()=>{
+				$.cookie("username","",{path:'/'});
+				this.showUser();
+			})
+		}
+
+		showUser(){
+			if($.cookie("username")){//存在登录
+				$("#userLi").show();
+				$("#login").hide();
+
+				$("#userSpan").html($.cookie("username"));
+			}else{
+				$("#login").show();
+				$("#userLi").hide();
+			}
 		}
 	}
 	return new Header();
