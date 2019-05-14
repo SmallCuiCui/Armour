@@ -9,6 +9,8 @@ require(["config"],()=>{
 				this.render();
 			}
 			render(){
+
+				//渲染购物车下面的猜你喜欢商品
 				shopdis.render('hotList');
 			}
 			bindEvent(){

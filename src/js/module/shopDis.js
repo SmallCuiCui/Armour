@@ -15,9 +15,9 @@ define(["jquery","template","url"], ($,template,url) =>{
 				success:data =>{
 
 					if(data.res_code == 1){
-						console.log(data);
 						//调用页面有固定的模板存在
 						let list = data.res_body.list;
+						console.log(list);
 						$("#mainWrap").html(template('newlist-template',{list}));
 					}
 				}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>详情页面</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="/libs/font/iconfont.css">
+	<link rel="stylesheet" type="text/css" href="/css/detail.css">
+</head>
+<body>
+	<header></header>
+
+	<div class="detaiContainer" id="detaiContainer">
+		
+	</div>
+
+	<script type="text/html" id="detailModle">
+		<div class="picture">
+			<div class="view_thumbs" id="gal1">
+				<ul class="view-ul">
+					<li class="current">
+						<a href="#" data-image="{{data.images[0]}}" data-zoom-image="{{data.images[0]}}">
+							<img class="s" src="{{data.images[0]}}" />
+						</a>
+					</li>
+					<li>
+						<a href="#" data-image="{{data.images[1]}}" data-zoom-image="{{data.images[1]}}">
+							<img class="s" src="{{data.images[1]}}" />
+						</a>
+					</li>
+					<li>
+						<a href="#" data-image="{{data.images[2]}}" data-zoom-image="{{data.images[2]}}">
+							<img class="s" src="{{data.images[2]}}" />
+						</a>
+					</li>
+					<li>
+						<a href="#" data-image="{{data.images[3]}}" data-zoom-image="{{data.images[3]}}">
+							<img class="s" src="{{data.images[3]}}" />
+						</a>
+					</li>
+					<li>
+						<a href="#" data-image="{{data.images[4]}}" data-zoom-image="{{data.images[4]}}">
+							<img class="s" src="{{data.images[4]}}" />
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="view_bd">
+				<img class="zoom-img" src="{{data.images[0]}}" data-zoom-image="{{data.images[0]}}"/>
+				<p>移入鼠标，查看放大效果</p>
+			</div>
+		</div>
+		<div class="content">
+			<h5>{{data.shopName}}</h5>
+			<h6>{{data.price}}</h6>
+			
+			<div>
+				<p>颜色：<font id="colorCon">黄色</font></p>
+				{{each data.colors color}}
+				<span style="background-color:{{color}}"></span>
+				{{/each}}
+			</div>
+
+			<div>
+				<p>尺码：</p>
+				{{each data.sizes size}}
+				<span>{{size}}</span>
+				{{/each}}
+			</div>
+
+			<div>
+				<p>数量：<font id="numCon"></font></p>
+				<p class="numChange">
+					<font id="subBtn">-</font>
+					<span id="numWrap">1</span>
+					<font id="addBtn">+</font>
+				</p>
+			</div>
+
+			<div>
+				<a href="javascript:;" id="addCart" class="btn addcart">加入购物车</a>
+				<a href="javascript:;" id="shopNow" class="btn shopNow">立即购买</a>
+			</div>
+
+			<ul>
+				<li>
+					<i class="iconfont icon-xinxiduanxinsixinduihua"></i>
+					<span>在线客服</span>
+				</li>
+				<li>
+					<i class="iconfont icon-weibo"></i>
+					<span>在线客服</span>
+				</li>
+				<li>
+					<i class="iconfont icon-weixin"></i>
+					<span>在线客服</span>
+				</li>
+			</ul>
+
+		</div>
+	</script>
+
+	<footer></footer>
+	<script src="/libs/require/require.min.js" data-main="/js/detail.js"></script>
+</body>
+</html>		
+

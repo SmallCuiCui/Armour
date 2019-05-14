@@ -11,6 +11,7 @@
 </head>
 <body>
 
+<!-- 此页面header部分有差别，直接编辑，不用模块引入 -->
 	<header>
 		
 		<!-- 头部顶的黑色信息栏 -->
@@ -30,6 +31,8 @@
 
 	</header>
 
+
+<!-- 购物车商品展示区域 -->
 	<div class="shopWrap">
 		<!-- 没有商品时显示 -->
 		<div class="noGoods">
@@ -139,23 +142,22 @@
 			</div>
 		</div>
 
-		<!-- 购物车下推荐商品展示 -->
+<!-- 购物车下推荐商品展示 -->
 		<div class="main" id="mainWrap"></div>
 		<script type="text/html" id="newlist-template">
 			{{each list item}}
 			<dl>
-				<dt><a href="javascript:;"><img src="{{item.image}}"></a></dt>
+				<dt><a href="/htmls/detail.html?id={{item.id}}"><img src="{{item.images[0]}}"></a></dt>
 				<ul>
 					{{each item.colors color}}
 					<li style="background-color: {{color}}"></li>
 					{{/each}}
 				</ul>
-				<p><a href="javascript:;">{{item.shopName}}</a></p>
+				<p><a href="/htmls/detail.html?id={{item.id}}">{{item.shopName}}</a></p>
 				<span>{{item.price}}</span>
 			</dl>
 			{{/each}}
 		</script>
-
 	</div>
 
 

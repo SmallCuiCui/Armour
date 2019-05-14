@@ -111,13 +111,13 @@
 	<script type="text/html" id="newlist-template">
 		{{each list item}}
 		<dl>
-			<dt><a href="javascript:;"><img src="{{item.image}}"></a></dt>
+			<dt><a href="/htmls/detail.html?id={{item.id}}"><img src="{{item.images[0]}}"></a></dt>
 			<ul>
 				{{each item.colors color}}
 				<li style="background-color: {{color}}"></li>
 				{{/each}}
 			</ul>
-			<p><a href="javascript:;">{{item.shopName}}</a></p>
+			<p><a href="/htmls/detail.html?id={{item.id}}">{{item.shopName}}</a></p>
 			<span>{{item.price}}</span>
 		</dl>
 		{{/each}}
