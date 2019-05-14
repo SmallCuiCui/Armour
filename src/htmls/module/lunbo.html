@@ -1,20 +1,23 @@
 
 <!-- 轮播图模块 -->
-<script type="text/html" id="lunboModle">
-	<ul id="lunboUl">
-		{{each list item}}
-		<li class="imgWrap">
-			<a href="javascript:;"><img src="{{item}}"></a>
-			<a href="javascript:;" class="blackBtn btn">立即购买</a>		
-		</li>
-		{{/each}}
 
-		<ol id="list">
+<!-- swiper插件实现轮播 -->
+<script type="text/html"  id="lunboModle">
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
 			{{each list item}}
-			<li><i class="iconfont icon-yuandian"></i></li>
+			<div class="swiper-slide">
+				<a href="javascript:;"><img src="{{item}}"></a>
+				<a href="javascript:;" class="whiteBtn btn">立即购买</a>
+			</div>
 			{{/each}}
-		</ol>
+		</div>
+		<!-- 如果需要分页器 -->
+		<div class="swiper-pagination"></div>
 
-	</ul>
-
+		<!-- 如果需要导航按钮 -->
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+	</div>
 </script>
+

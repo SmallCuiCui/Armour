@@ -10,6 +10,7 @@ require.config({
 		"url":"js/module/url",
 		"jquery":"libs/jquery/jquery-3.2.1",
 		"template":"libs/art-template/template-web",
-		"cookie":"libs/jquery-plugins/jquery.cookie"
+		"cookie":"libs/jquery-plugins/jquery.cookie",
+		"swiper":"libs/swiper/js/swiper"
 	}
 })

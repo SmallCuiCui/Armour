@@ -3,7 +3,46 @@
 	height:560px;
 	width:100%;
 
-	ul{
+	.swiper-container{
+		.swiper-slide{
+			position:relative;
+
+			img{
+				height:560px;
+				width:100%;
+			}
+
+			//立即购买按钮
+			.btn{
+				position:absolute;
+				bottom:60px;
+				left:65%;
+			}
+		}
+		
+		.swiper-pagination{
+			bottom:40px;
+			.swiper-pagination-bullet{
+				width:10px;
+				height:10px;
+				border-radius:5px;
+				backgound-color:#666666;
+			}
+		}
+
+		span.swiper-pagination-bullet{
+			width: 14px;
+			height: 14px;
+			opacity: 1;
+			background: #fff;
+		}
+		span.swiper-pagination-bullet-active{
+			background: #007aff;
+		}
+	}
+
+	// 自己写的轮播样式
+	/* ul{
 		height:560px;
 		width:100%;
 		position:relative;
@@ -52,5 +91,5 @@
 				}
 			}
 		}
+		} */
 	}
-}

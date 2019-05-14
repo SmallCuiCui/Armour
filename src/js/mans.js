@@ -15,7 +15,7 @@ require(["config"], () =>{
 				switch(this.html){
 					case "mans":
 					this.data = {
-						bannerImg:["/images/people/man_bg1.jpg","/images/people/man_bg2.jpg"],//轮播图
+						bannerImg:["/images/people/man_bg1.jpg","/images/people/man_bg2.jpg"],
 						reconmand:"mans",//推荐商品数据接口
 						peopleTow:"mansTow",//两个模块数据接口
 						peopleThree:"mansThree"//三个模块数据接口
@@ -24,7 +24,7 @@ require(["config"], () =>{
 
 					case "womans":
 					this.data = {
-						bannerImg:["/images/people/woman_bg1.jpg","/images/people/woman_bg2.jpg"],//轮播图
+						bannerImg:["/images/people/woman_bg1.jpg","/images/people/woman_bg2.jpg"],
 						reconmand:"mans",//推荐商品数据接口
 						peopleTow:"mansTow",//两个模块数据接口
 						peopleThree:"mansThree"//三个模块数据接口
@@ -33,7 +33,8 @@ require(["config"], () =>{
 
 					case "child":
 					this.data = {
-						bannerImg:["/images/people/child_bg1.jpg","/images/people/child_bg2.jpg"],//轮播图
+						//轮播图
+						bannerImg:["/images/people/child_bg1.jpg","/images/people/child_bg2.jpg"],
 						reconmand:"mans",//推荐商品数据接口
 						peopleTow:"mansTow",//两个模块数据接口
 						peopleThree:"mansThree"//三个模块数据接口
