@@ -11,6 +11,9 @@ define(["jquery","cookie"], $ =>{
 				this.bindEvent();
 				//取得kooie，判断是否登录
 				this.showUser();
+
+				//计算购物车数量
+				this.calcCartNum();
 			});
 		}
 		bindEvent(){
@@ -46,6 +49,20 @@ define(["jquery","cookie"], $ =>{
 				$("#login").show();
 				$("#userLi").hide();
 			}
+		}
+		//计算购物车商品数量，并渲染
+		calcCartNum(){
+			let cart = localStorage.getItem('cart');
+			let num = 0;
+			if(cart){
+				cart = JSON.parse(cart);
+				num = cart.reduce((n, shop) =>{
+					n += shop.num;
+					return n;
+				},0);
+			}
+			$('#cartNum').html(num);
+			
 		}
 	}
 	return new Header();

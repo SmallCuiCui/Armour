@@ -7,6 +7,7 @@
 	width:98%;
 	margin:0 auto;
 
+	//没有商品
 	.noGoods{
 		display:none;
 		text-align:center;
@@ -25,14 +26,30 @@
 		}
 	}
 
+	//商品列表
 	.shopList{
+		padding-top:45px;
+		>div{
+			overflow:hidden;
+			h5{
+				float:left;
+				height:80px;
+				font-size:28px;
+				padding-left:30px;
+				line-height:80px;
+			}
+			p{
+				float:right;
+				margin-right:30px;
+				margin-top:30px;
+			}
+		}
 		
 		table{
 			width:100%;
 			font-size:16px;
 			color:#1d1d1d;
 			table-layout:fiexed;
-			margin-top:30px;
 			border-collapse:collapse;
 			thead{
 				background-color:#eeeeee;
@@ -40,7 +57,7 @@
 				tr{
 					height:50px; 
 					line-height:50px;
-					td{
+					th{
 						input{
 							margin-right:16px;
 						}
@@ -54,21 +71,38 @@
 					}
 				}
 			}
+
+			.checkBtn{
+				display:inline-block;
+				font-weight:normal;
+				width:20px;
+				height:20px;
+				text-align:center;
+				line-height:20px;
+				border:1px solid #1d1d1d;
+				margin-right:15px;
+				i{
+					font-size:24px;
+					color:#1d1d1d;
+					display:none;
+					&.ischeck{
+						display:inline;
+					}
+				}
+			}
 			tbody{
+				color:#1d1d1d;
 				tr{
 					border-bottom:1px solid #eeeeee;
-					height:172px;
 					width:100%;
+					
 					td{
 						padding-top:30px;
 						padding-bottom:20px;
-						height:152px;
+						font-size:16px;
+						height:120px;
 						text-align:center;
-						img{
-							width:130px;
-							height:172px;
-							margin-right:20px;
-						}
+						
 						&:nth-child(1){
 							width:5%;
 							text-align: right;
@@ -77,56 +111,118 @@
 								margin-right: 16px;
 							}
 						}
-						
+						//商品详情展示列
 						&:nth-child(2){
 							width:47%;
 							margin-right:16px;
 							text-align:left;
 							vertical-align:top;
-							
 
-							div{
+							img{
+								width:100px;
+								height:120px;
+								margin-right:24px;
+							}
+
+							>div{
 								vertical-align:top;
 								display:inline-block;
-								overflow:hidden;
-
-								p{
-									line-height:24px;
+								//商品名称
+								>p{
+									line-height:32px;
 									margin-bottom:12px;
 									a{
 										color:#1d1d1d;
 									}
-									span{
-										margin-right:20px;
-									}
-									&:last-child{
+								}
+								.wrap{
+									//选择框
+									position:relative;
+									width:380px;
+									height:50px;
+									.checkDiv{
+										position:absolute;
+										top:0;
+										width:170px;
 										font-size:14px;
-									}
-								}
-								div{
-									display:none;
-									ul{
-									float:left;
-									width:120px;
-									height:40px;
-									overflow:hidden;
-									border:1px solid #eeeeee;
-									margin-right:20px;
-									padding-left:20px;
-									li{
-										display:flex;
-										align-items:center;
-										
-										div{
-											width:20px;
-											height:20px;
-											margin-right:15px;
-											border:1px solid #1d1d1d;
+										margin-right:10px;
+										>p{
+											font-size:14px;
+											line-height:32px;
 										}
-										height:40px;
-										line-hegiht:40px;
+
+										ul{
+											width:140px;
+											display:none;
+											border-top:1px solid #dcdcdc;
+											border-left:1px solid #dcdcdc;
+											border-right:1px solid #dcdcdc;
+
+											li{
+												width:100%;
+												height:40px;
+												display:none;
+												line-height:40px;
+												padding-left:10px;
+												box-sizing:border-box;
+												border-bottom:1px solid #dcdcdc;
+												cursor:pointer;
+												background-color:white;
+												i{
+													float:right;
+													margin-right:5px;
+													&.hidden{
+														display:none;
+													}
+												}
+												&.show{
+													display:block !important;
+												}
+												.colorCon{
+													display:inline-block;
+													vertical-align:top;
+													width:30px;
+													height:20px;
+													margin:10px 0;
+													margin-right:15px;
+													border:1px solid #1d1d1d;
+												}
+											}
+										}
+									}
+									.colorCheck{
+										left:0;
+									}
+									.sizeCheck{
+										right:0;
+
+										li{
+											padding-left:30px !important;
+										}
 									}
 								}
+							}
+						}
+
+						&:nth-child(4){
+							div{
+								width:110px;
+								height:40px;
+								margin:auto;
+								display:flex;
+								align-items:center;
+								span{
+									display:none;
+									width:32px;
+									height:40;
+									line-height:40px;
+									text-align:center;
+									border-left:1px solid #ababab;
+									border-right:1px solid #ababab;
+									cursor:pointer;
+								}
+								font{
+									flex:1;
 								}
 							}
 						}
@@ -138,8 +234,16 @@
 								display:block;
 								margin-bottom:20px;
 
-								&#okBtn{
+								&.okBtn{
 									display:none;
+									width:50px;
+									height:30px;
+									margin:auto;
+									line-height:30px;
+									text-decoration:none;
+									text-align:center;
+									color:white;
+									background-color:black;
 								}
 							}
 						}
@@ -147,19 +251,90 @@
 						
 					}
 
-					&.ac{
-						.coloeCheck{
-							display:inline-block;
-						}
-						#okBtn{
-							display:block;
-						}
-						#editBtn{
+					//编辑状态下
+					&.edit{
+						//隐藏颜色，尺码内容
+						.checkP{
 							display:none;
 						}
+
+						//显示颜色，尺码选择
+						.checkUl{
+							display:block !important;
+						}
+
+						//显示数量选择
+						.numcheck{
+							border-bottom:1px solid #ababab;
+							border-top:1px solid #ababab;
+							span{
+								display:inline-block !important;
+							}
+						}
+						//显示确定按钮
+						.okBtn{
+							display:block !important;
+						}
+						//隐藏编辑按钮
+						.editBtn{
+							display:none;
+						}
+
 					}
 				}
 				
+			}
+		}
+
+		.totalBox{
+			height:150px;
+			display:flex;
+			align-items:center;
+			div{
+				&:nth-child(1){
+					flex:1;
+					height:100%;
+					vertical-align:top;
+					p{
+						width:100%;
+						
+						text-align:right;
+						font-size:16px;
+						color:#4a4a4a;
+						margin:0;
+						margin-top:60px;
+					}
+				}
+				&:nth-child(2){
+					margin-left:40px;
+					margin-right:50px;
+					text-align:right;
+					h5{
+						display:block;
+						text-align:center;
+						font-size:24px;
+						color:#1d1d1d;
+					}
+					p{
+						font-size:12px;
+						color:#7c7c7c;
+						display:block;
+					}
+				}
+
+				&:nth-child(3){
+					a{
+						display:block;
+						width:386px;
+						height:60px;
+						line-height:60px;
+						text-align:center;
+						font-size:24px;
+						font-weight:bold;
+						color:white;
+						background-color:#ea212e;
+					}
+				}
 			}
 		}
 	}

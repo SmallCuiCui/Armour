@@ -23,6 +23,25 @@ define(["jquery","template","url"], ($,template,url) =>{
 				}
 			})
 		}
+
+		//仅渲染8个
+		renderLess(dataUrl){
+			$.ajax({
+				url:url.baseListUrl + dataUrl,
+				type:"get",
+				dataType:"json",
+				success:data =>{
+
+					if(data.res_code == 1){
+						//调用页面有固定的模板存在
+						let list = data.res_body.list;
+						list.length = 8;
+						console.log(list);
+						$("#mainWrap").html(template('newlist-template',{list}));
+					}
+				}
+			})
+		}
 	}
 
 	return new Shopdis();

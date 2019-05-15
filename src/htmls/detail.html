@@ -46,7 +46,7 @@
 				</ul>
 			</div>
 			<div class="view_bd">
-				<img class="zoom-img" src="{{data.images[0]}}" data-zoom-image="{{data.images[0]}}"/>
+				<img class="zoom-img" id = "showImg" src="{{data.images[0]}}" data-zoom-image="{{data.images[0]}}"/>
 				<p>移入鼠标，查看放大效果</p>
 			</div>
 		</div>
@@ -55,21 +55,28 @@
 			<h6>{{data.price}}</h6>
 			
 			<div>
-				<p>颜色：<font id="colorCon">黄色</font></p>
+				<p>style:
+					<font id="wrapcolor"></font>
+					<a href="javascript:;" class="tips">请选择颜色</a>
+				</p>
+
 				{{each data.colors color}}
-				<span style="background-color:{{color}}"></span>
+				<span style="background-color:{{color}};color:{{color}}" class="spanBtn"></span>
 				{{/each}}
 			</div>
 
 			<div>
-				<p>尺码：</p>
+				<p>尺码：<font id="wrapsize"></font>
+					<a href="javascript:;" class="tips">请选择尺码</a>
+					<a class="chimafont" id="chimafont" href="#chima"><i class="iconfont icon-chima"></i>查看尺码</a>
+				</p>
 				{{each data.sizes size}}
-				<span>{{size}}</span>
+				<span class="spanBtn">{{size}}</span>
 				{{/each}}
 			</div>
 
 			<div>
-				<p>数量：<font id="numCon"></font></p>
+				<p>数量：<font id="numFont">1</font></p>
 				<p class="numChange">
 					<font id="subBtn">-</font>
 					<span id="numWrap">1</span>
@@ -89,19 +96,173 @@
 				</li>
 				<li>
 					<i class="iconfont icon-weibo"></i>
-					<span>在线客服</span>
+					<span>分享</span>
 				</li>
 				<li>
-					<i class="iconfont icon-weixin"></i>
-					<span>在线客服</span>
+					<i class="iconfont icon-xinfeng"></i>
+					<span>到货通知</span>
 				</li>
 			</ul>
 
 		</div>
 	</script>
 
-	<footer></footer>
-	<script src="/libs/require/require.min.js" data-main="/js/detail.js"></script>
+	<!-- 商品描述与尺码表 -->
+	<div class="shopDiscript">
+		<!-- 产品描述 -->
+		<div class="miaosu">
+			<h5 id="miaosu">
+				<span>产品描述</span>
+				<i class="iconfont icon--hao jian"></i>
+				<i class="iconfont icon-hao jia"></i>
+			</h5>
+			<div class="wrap">
+				<ul>
+					<li>
+						<span>科技介绍</span>
+						<ol>
+							<li>排潮面料，有助于让你保持干爽舒适</li>
+							<li>弹性拉伸构造，有助于改善运动灵活性</li>
+							<li>防异味技术有助于减少异味微生物的滋长</li>
+						</ol>
+					</li>
+					<li>
+						<span>商品细节</span>
+						<ol>
+							<li>顺滑柔软的防抽丝、防起球面料，有助于使衣服表面平滑且富有纹理</li>
+							<li>耐久的罗纹针织衣领</li>
+							<li>合身穿着</li>
+							<li>饰有热压logo</li>
+							<li>根据XL码检测重量约为220g，不同尺码会有相应差异</li>
+						</ol>
+					</li>
+					<li>
+						<span>材质说明</span>
+						<ol>
+							<li>主要面料：聚酯纤维，氨纶</li>
+						</ol>
+					</li>
+					<li>
+						<span>适合运动</span>
+						<ol>
+							<li>适合高尔夫等运动</li>
+						</ol>
+					</li>
+					<li>
+						<span>价格说明</span>
+						<ol>
+							<li>划线价格：划线的价格可能是商品的专柜吊牌价或正品零售价指导价或该商品的曾经展示过的销售价等，仅供您参考</li>
+							<li>未划线价格：未划线的价格是商品在官网上的销售标价，具体的成交价格可能因会员使用优惠券发生变化，最终以订单结算页价格为准</li>
+						</ol>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- 尺码表 -->
+		<div class="chima hidden" name='chima'>
+			<h5 id="chima">
+				<span>尺码表及裁剪指引</span>
+				<i class="iconfont icon--hao jian"></i>
+				<i class="iconfont icon-hao jia"></i>
+			</h5>
+			<div class="wrap">
+				<div class="left">
+					<img src="/images/model.jpg">
+					<h6>LOOSE</h6>
+					<h6>宽松型</h6>
+					<p>剪裁舒适；活动无拘无束；宽松却男性化的曲线设计；令伸展随心所欲；尽情运动欢畅淋漓</p>
+				</div>
+				<div class="right">
+					<ul>
+						<li>
+							<span>尺码</span>
+							<span>身高(CM)</span>
+							<span>胸围(CM)</span>
+							<span>腰围(CM)</span>
+						</li>
+						<li>
+							<span>S</span>
+							<span>163-167</span>
+							<span>85-87</span>
+							<span>72-74</span>
+						</li>
+						<li>
+							<span>M</span>
+							<span>168-172</span>
+							<span>88-92</span>
+							<span>76-79</span>
+						</li>
+						<li>
+							<span>L</span>
+							<span>173-177</span>
+							<span>93-97</span>
+							<span>80-84</span>
+						</li>
+						<li>
+							<span>XL</span>
+							<span>178-182</span>
+							<span>98-102</span>
+							<span>85-89</span>
+						</li>
+						<li>
+							<span>XXL</span>
+							<span>183-187</span>
+							<span>102-107</span>
+							<span>90-94</span>
+						</li>
+						<li>
+							<span>3XL</span>
+							<span>188-192</span>
+							<span>108-112</span>
+							<span>95-99</span>
+						</li>
+					</ul>
+					<p>胸围 :测量尺定位于腋下，绕胸部最宽部位一周，记录数值。</p>
+					<p>腰围 :测量尺绕腰部最细部位一周，记录数值。</p>
+					<p>点击查看更多'UA男子上装尺码对照表'</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- 详情页下推荐商品展示 -->
+	<div class="shopWrap">
+		<div class="lineBox">
+			<div class="line_left">
+				<p></p>
+			</div>
+			<ul class="center">
+				<li class="ac"><a href="javascript:;">猜你会喜欢</a></li>
+				<li><a href="javascript:;">最近浏览</a></li>
+			</ul>
+			<div class="line-right">
+				<p></p>
+			</div>
+		</div>
+
+		<div class="main" id="mainWrap"></div>
+		<script type="text/html" id="newlist-template">
+			{{each list item}}
+			<dl>
+				<dt><a href="/htmls/detail.html?id={{item.id}}"><img src="{{item.images[0]}}"></a></dt>
+				<ul>
+					{{each item.colors color}}
+					<li style="background-color: {{color}}"></li>
+					{{/each}}
+				</ul>
+				<p><a href="/htmls/detail.html?id={{item.id}}">{{item.shopName}}</a></p>
+				<span>{{item.price}}</span>
+			</dl>
+			{{/each}}
+		</script>
+	</div>
+</div>
+
+
+<footer></footer>
+<script src="/libs/require/require.min.js" data-main="/js/detail.js"></script>
 </body>
 </html>		
 

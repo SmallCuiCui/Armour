@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<!-- 此页面header部分有差别，直接编辑，不用模块引入 -->
+	<!-- 此页面header部分有差别，直接编辑，不用模块引入 -->
 	<header>
 		
 		<!-- 头部顶的黑色信息栏 -->
@@ -32,24 +32,29 @@
 	</header>
 
 
-<!-- 购物车商品展示区域 -->
+	<!-- 购物车商品展示区域 -->
 	<div class="shopWrap">
 		<!-- 没有商品时显示 -->
-		<div class="noGoods">
+		<div class="noGoods" id="noGoods">
 			<h5>您的购物车中没有商品</h5>
 			<i class="iconfont icon-gouwuche1"></i>
 		</div>
 
-		<div class="shopList">
+		<!-- 商品列表 -->
+		<div class="shopList" id="shopList">
 			<div>
 				<h5>购物车 </h5>
-				<p>已选中<span></span>件商品</p>
+				<p>已选中 <span class="checkBox">0</span> 件商品</p>
 			</div>
 
 			<table>
 				<thead>
 					<tr>
-						<td><input type="checkbox" name="" id="allBtn"></td>
+						<th>
+							<a href="javascript:;" class="checkBtn" id="allBtn">
+								<i class="iconfont icon-zhengque"></i>
+							</a>
+						</th>
 						<th>全选</th>
 						<th>商品信息</th>
 						<th>单价</th>
@@ -58,75 +63,100 @@
 						<th>操作</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr class="edit">
-						<td><input type="checkbox" name="" class="checkBtns"></td>
+				<tbody></tbody>
+
+				<script type="text/html" id="cartModel">
+					{{each list shop index}}
+					<tr data-index={{index}}>
+						<td>
+							<!-- checkBtn样式为css统一样式 -->
+							<a href="javascript:;" class="checkBtn checkShop">
+								<i class="iconfont icon-zhengque"></i>
+							</a>
+						</td>
 						<!-- 第一列商品信息基本展示 -->
 						<td colspan="2">
 							
-							<a href="javascript:;"><img src="/images/modo1.jpg"></a>
+							<a href="/htmls/detail.html?id={{shop.id}}"><img src="{{shop.images[0]}}"></a>
+							<!-- 商品详情 -->
 							<div>
-								<p><a href="javascript:;">女士露脐短上衣</a></p>
-								<p>颜色:<span>蜜桃粉286</span>  <font>尺码:</font>S</p>
-								<div class="coloeCheck">
-									<!-- 选择颜色 -->
-									<ul>
-										<li>
-											<div></div>
-											<span>蜜桃粉</span>
-											<i class="iconfont "></i>
-										</li>
-										<li>
-											<div></div>
-											<span>蜜桃粉</span>
-											<i class="iconfont "></i>
-										</li>
-										<li>
-											<div></div>
-											<span>蜜桃粉</span>
-											<i class="iconfont "></i>
-										</li>
-									</ul>
-									<!-- 选择尺码 -->
-									<ul>
-										<li>
-											<div></div>
-											<span>蜜桃粉</span>
-											<i class="iconfont "></i>
-										</li>
-										<li>
-											<div></div>
-											<span>蜜桃粉</span>
-											<i class="iconfont "></i>
-										</li>
-										<li>
-											<div></div>
-											<span>蜜桃粉</span>
-											<i class="iconfont "></i>
-										</li>
-									</ul>
+								<p><a href="/htmls/detail.html?id={{shop.id}}">{{shop.shopName}}</a></p>
+								
+								<div class="wrap">
+									<div class="colorCheck checkDiv">
+										<!-- 选择颜色 -->
+										<p class="checkP">颜色 : <span>{{shop.color}}</span></p>
+										<ul class="checkUl">
+											<li class="checkLi show">
+												<div class="colorCon"></div>
+												<span>蜜桃粉</span>
+												<i class="iconfont icon-fanhui-copy-copy-copy-copy"></i>
+												<i class="iconfont icon-up hidden"></i>
+											</li>
+											{{each shop.colors color}}
+											<li class="checkLi">
+												<div class="colorCon" style="background-color: {{color}};"></div>
+												<span>{{color}}</span>
+											</li>
+											{{/each}}
+										</ul>
+									</div>
+									<div class="sizeCheck checkDiv">
+										<!-- 选择尺码 -->
+										<p class="checkP">尺码 : <span>{{shop.size}}</span></p>
+										<ul class="checkUl">
+											<li class="checkLi show">
+												<span>M</span>
+												<i class="iconfont icon-fanhui-copy-copy-copy-copy"></i>
+												<i class="iconfont icon-up hidden"></i>
+											</li>
+											{{each shop.sizes size}}
+											<li class="checkLi">
+												<span>{{size}}</span>
+											</li>
+											{{/each}}
+										</ul>
+									</div>
 								</div>
 							</div>
 						</td>
-
-						<td>￥449.00</td>
+						<!-- 单价 -->
+						<td>{{shop.price}}</td>
+						<!-- 数量选择 -->
 						<td>
-							<div>
-								<span><i class="iconfont "></i></span>
-								<font>1</font>
-								<span><i class="iconfont "></i></span>
+							<div class="numcheck">
+								<span class="jianSpan"><i class="iconfont icon--hao"></i></span>
+								<font class="numFont">{{shop.num}}</font>
+								<span class="jiaSpan"><i class="iconfont icon-hao"></i></span>
 							</div>
 						</td>
-						<td>499.00</td>
+						<!-- 小计 -->
+						<td class="xiaoji">{{shop.price * shop.num}}</td>
+						<!-- 操作 -->
 						<td>
-							<a href="javascript:;" id="delBtn">删除</a>
-							<a href="javascript:;" id="editBtn">编辑</a>
-							<a href="javascript:;" id="okBtn">确定</a>
+							<a href="javascript:;" class="delBtn">删除</a>
+							<a href="javascript:;" class="editBtn">编辑</a>
+							<a href="javascript:;" class="okBtn">确定</a>
 						</td>
 
 					</tr>
-				</tbody>
+					{{/each}}
+				</script>
+				
 			</table>
+
+			<div class="totalBox">
+				<div>
+					<p>已选中 <span class="checkBox">0</span> 件商品</p>
+				</div>
+				<div>
+					<h5>合计：￥<span id="allMoneyBox">0</span></h5>
+					<p>(不含运费)</p>
+				</div>
+				<div>
+					<a href="javascript:;">立即结算</a>
+				</div>
+			</div>
 		</div>
 
 		<div class="lineBox">
@@ -142,7 +172,7 @@
 			</div>
 		</div>
 
-<!-- 购物车下推荐商品展示 -->
+		<!-- 购物车下推荐商品展示 -->
 		<div class="main" id="mainWrap"></div>
 		<script type="text/html" id="newlist-template">
 			{{each list item}}
