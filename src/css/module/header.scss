@@ -359,9 +359,6 @@ nav{
 						font-size:12px;
 					}
 				}
-				&:hover .smallCart{
-					display:block;
-				}
 
 				// 预览购物车 
 				.smallCart{
@@ -370,8 +367,9 @@ nav{
 					top:48px;
 					right:-55px;
 					width:370px;
+					z-index:100000;
 					max-height:485px;
-					border:1px solid #1d1d1d;
+					border:1px solid #c7c7c7;
 					border-right:0;
 					overflow:hidden;
 					background-color:white;

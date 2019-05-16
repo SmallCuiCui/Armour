@@ -1,29 +1,21 @@
 define(["jquery","url","template"],($,url,template) =>{
 	class People{
 		constructor(){
-			
-			this.render().then(() =>{
-				this.getData();
-			});
+			//渲染男子，女子，少年页面下的数据
 		}
 
 		render(data){
 			this.data = data;
 				//先加载模板到指定页面，再渲染数据
 				
-				/*$("#content").load("/htmls/module/people.html",() =>{
+				$("#content").load("/htmls/module/people.html",() =>{
 					this.getData();
-				})*/
-
-				return new Promise(resolve =>{
-					$("#content").load("/htmls/module/people.html",() =>{
-						resolve();
-					})
 				})
 				
 			}
 
 			getData(){
+				console.log(this.data);
 				$.ajax({
 					url:url.baseListUrl + this.data.reconmand,
 					type:"get",

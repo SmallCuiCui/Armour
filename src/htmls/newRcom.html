@@ -13,25 +13,22 @@
 
 	<!-- 商品筛选区 -->
 	<div class="selectBox">
-		<h5>全部新品推荐<span><font>154</font>件商品</span></h5>
+		<h5 id="pagetype">全部新品推荐<span><font>154</font>件商品</span></h5>
 		<!-- 页面导航展示 -->
-		<ul class="pageNav">
-			<li><a href="/">首页</a>/</li>
-			<li><a href="/">新品推荐</a>/</li>
-			<li><a href="/">全部新品推荐</a></li>
+		<ul class="pageNav" id="pageNav">
+			<li><a href="/index.html">首页</a>/</li>
 		</ul>
 
 		<!-- 选择的标签展示 -->
-		<ul class="labelBox">
+		<ul class="labelBox" id="labelBox">
 			<li>新品推荐<i class="iconfont icon-X-copy"></i></li>
-			<li>清除所有选项</li>
+			<li id="clearAll">清除所有选项</li>
 		</ul>
 
 		<ul class="shopNav" id="shopNav">
 			<li data-index = "1">
 				<span>商品分类</span>
-				<i class="iconfont icon-sort-down"></i>
-				<font style="display: block;"></font>	
+				<i class="iconfont icon-sort-down"></i>	
 			</li>
 			<li data-index = "2">
 				<span>剪裁</span>
@@ -60,25 +57,25 @@
 
 		<ul class="shopSelect" id="shopSelect">
 			<ol data-index = "1">
-				<li>男子新品推荐<i class="iconfont icon-sort-down"></i></li>
-				<li>女子新品推荐<i class="iconfont icon-sort-down"></i></li>
-				<li>少年新品推荐<i class="iconfont icon-sort-down"></i></li>
-				<li>全部新品推荐<i class="iconfont icon-sort-down"></i></li>
+				<li><a href="/htmls/newRcom.html?type=0&smallType=男子新品推荐">男子新品推荐<i class="iconfont icon-sort-down"></i></a></li>
+				<li><a href="/htmls/newRcom.html?type=0&smallType=女子新品推荐">女子新品推荐<i class="iconfont icon-sort-down"></i></a></li>
+				<li><a href="/htmls/newRcom.html?type=0&smallType=少年新品推荐">少年新品推荐<i class="iconfont icon-sort-down"></i></a></li>
+				<li><a href="/htmls/newRcom.html?type=2">全部新品推荐<i class="iconfont icon-sort-down"></i></a></li>
 			</ol>
-			<ol data-index = "2">
-				<li>强力伸缩型(<span></span>)</li>
-				<li>修身型(<span></span>)</li>
-				<li>宽松型(<span></span>)</li>
+			<ol data-index = "2" class="checkBtns">
+				<li>强力伸缩型</li>
+				<li>修身型</li>
+				<li>宽松型</li>
 			</ol>
-			<ol data-index = "3">
-				<li>训练(<span></span>)</li>
-				<li>跑步(<span></span>)</li>
-				<li>高尔夫(<span></span>)</li>
-				<li>户外(<span></span>)</li>
-				<li>篮球(<span></span>)</li>
-				<li>足球(<span></span>)</li>
+			<ol data-index = "3" class="checkBtns">
+				<li>训练</li>
+				<li>跑步</li>
+				<li>高尔夫</li>
+				<li>户外</li>
+				<li>篮球</li>
+				<li>足球</li>
 			</ol>
-			<ol data-index = "4">
+			<ol data-index = "4" class="checkBtns">
 				<li><span></span>黑色</li>
 				<li><span></span>白色</li>
 				<li><span></span>灰色</li>
@@ -90,13 +87,13 @@
 				<li><span></span>橙色</li>
 				<li><span></span>黄色</li>
 			</ol>
-			<ol data-index = "5">
-				<li>￥0-￥200(<span></span>)</li>
-				<li>￥200-￥400(<span></span>)</li>
-				<li>￥400-￥600(<span></span>)</li>
-				<li>￥600以上(<span></span>)</li>
+			<ol data-index = "5" class="checkBtns">
+				<li>￥0-￥200</li>
+				<li>￥200-￥400</li>
+				<li>￥400-￥600</li>
+				<li>￥600以上</li>
 			</ol>
-			<ol data-index = "6">
+			<ol data-index = "6" class="checkBtns">
 				<li>默认综合排序</li>
 				<li>最新发布商品</li>
 				<li>销量重高到底</li>

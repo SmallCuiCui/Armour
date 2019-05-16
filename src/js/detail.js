@@ -61,12 +61,13 @@ require(["config"],()=>{
 					alert("正在实现中。。。")
 				})
 
-				//点击商品描述或尺码表 隐藏或显示
+				//点击商品描述 隐藏或显示
 				$("#miaosu").on("click",function(e){
 					//存在hidden就删除，不存在就添加
 					$(this).parent().toggleClass('hidden');
 				})
 
+				//点击商品尺码表 隐藏或显示
 				$("#chima").on("click",function(e){
 					//存在hidden就删除，不存在就添加
 					$(this).parent().toggleClass('hidden');
@@ -172,7 +173,7 @@ require(["config"],()=>{
 
 				//调用计算商品数量的方法,调用渲染购物车预览
 				header.calcCartNum();
-				header.renderSmallCart();
+				// header.renderSmallCart();
 
 			}
 

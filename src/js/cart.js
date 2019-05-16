@@ -26,7 +26,6 @@ require(["config"],()=>{
 				//购物车先判断存在，然后再判断有没有东西
 				if(this.cart){
 					if(this.cart.length > 0){
-						console.log(this.cart);
 						this.num = this.cart.length;
 						$("#shopList").show();
 						$("#noGoods").hide();
@@ -71,7 +70,7 @@ require(["config"],()=>{
 					$(this).parents('tr').toggleClass('edit');
 				})
 
-				//点击删除
+				//点击删除，采用全部渲染
 				this.tbody.on("click",'.delBtn',function(e){
 					if(confirm("确定删除吗？")){
 						let shopIndex = Number($(this).parent().parent().attr('data-index'));
@@ -85,7 +84,7 @@ require(["config"],()=>{
 					
 				})
 
-				//点击确定
+				//点击确定，也采用全部，官网也是。。
 				this.tbody.on("click",'.okBtn',function(e){
 
 					//更新数据
@@ -112,7 +111,8 @@ require(["config"],()=>{
 					localStorage.setItem('cart',JSON.stringify(_this.cart));
 					_this.render();
 					_this.calcAllMoney();
-					$(this).parent('tr').toggleClass('edit');
+					/*console.log($(this).parents('tr')[0]);
+					$(this).parents('tr').toggleClass('edit');*/
 				})
 
 				//点击商品选择框
