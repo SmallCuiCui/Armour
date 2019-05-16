@@ -23,16 +23,22 @@ require(["config"],()=>{
 			render(){
 				this.cart = JSON.parse(localStorage.getItem('cart'));
 				
-				this.num = this.cart.length;
+				//购物车先判断存在，然后再判断有没有东西
 				if(this.cart){
-					$("#shopList").show();
-					$("#noGoods").hide();
+					if(this.cart.length > 0){
+						console.log(this.cart);
+						this.num = this.cart.length;
+						$("#shopList").show();
+						$("#noGoods").hide();
+					}else{
+						$("#shopList").hide();
+						$("#noGoods").show();
+					}
 				}else{
 					$("#shopList").hide();
 					$("#noGoods").show();
 				}
 
-				console.log(this.cart);
 
 				let list = this.cart;
 				this.tbody.html(template("cartModel",{list}));
@@ -48,6 +54,7 @@ require(["config"],()=>{
 
 				//颜色，尺码选择
 				this.tbody.on("click",".checkLi",function(e){
+
 					$(this).toggleClass('show');
 					$(this).siblings('li').toggleClass('show');
 					$(this).parent().children('li:first-child').addClass('show');
@@ -55,20 +62,23 @@ require(["config"],()=>{
 
 					let checkdata = $(this).find('span').html();
 					$(this).parent().children('li:first-child').find('span').html(checkdata);
+					$(this).parent().children('li:first-child').find('div').css("background-color",checkdata);
+
 				})
 
 				//点击编辑
 				this.tbody.on("click",'.editBtn',function(e){
-
-					$(this).parent().parent().toggleClass('edit');
-
+					$(this).parents('tr').toggleClass('edit');
 				})
 
 				//点击删除
 				this.tbody.on("click",'.delBtn',function(e){
 					if(confirm("确定删除吗？")){
 						let shopIndex = Number($(this).parent().parent().attr('data-index'));
-						//从cart中 删除shopIndex 重新存本地 重新渲染
+						//从cart中 删除shopIndex 重新存本地localstorage 重新渲染
+						_this.cart.splice(shopIndex,1)
+						localStorage.setItem('cart',JSON.stringify(_this.cart));
+						_this.render();
 						//$(this).parent().parent().remove();
 						_this.calcAllMoney();
 					}
@@ -77,9 +87,32 @@ require(["config"],()=>{
 
 				//点击确定
 				this.tbody.on("click",'.okBtn',function(e){
-					$(this).parent().parent().toggleClass('edit');
+
+					//更新数据
+					let shopIndex = Number($(this).parents('tr').attr('data-index'));
+					_this.cart[shopIndex].size = $(this).parents('tr').find("#sizeSpan").html();
+					_this.cart[shopIndex].color = $(this).parents('tr').find("#colorSpan").html();
+					_this.cart[shopIndex].num = Number($(".numFont").html());
+
+					// 判断是存在相同商品(id，color，size都相同的商品)需要合并
+					let ItemCart = _this.cart[shopIndex];
+					_this.cart.splice(shopIndex, 1);
+					
+					let _index = -1;
+					if(_this.cart.some(function(shop,i){
+						_index = i;
+						return shop.id === ItemCart.id && shop.size === ItemCart.size && shop.color === ItemCart.color;
+					})){
+						_this.cart[_index].num += ItemCart.num;
+					}else{
+						_this.cart.push(ItemCart);
+					}
+
+
+					localStorage.setItem('cart',JSON.stringify(_this.cart));
 					_this.render();
 					_this.calcAllMoney();
+					$(this).parent('tr').toggleClass('edit');
 				})
 
 				//点击商品选择框
@@ -122,11 +155,14 @@ require(["config"],()=>{
 					let num = $(this).siblings('font').html();
 					if(--num<1)num = 1;
 					$(this).siblings('font').html(num);
+
+
 				})
 				//编辑状态下点击加
 				this.tbody.on("click",'.jiaSpan',function(e){
 					let num = $(this).siblings('font').html();
 					$(this).siblings('font').html(++num);
+
 				})
 
 				
@@ -152,3 +188,5 @@ require(["config"],()=>{
 		new Cart();
 	})
 })
+
+

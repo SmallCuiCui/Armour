@@ -36,7 +36,6 @@ define(["jquery","template","url"], ($,template,url) =>{
 						//调用页面有固定的模板存在
 						let list = data.res_body.list;
 						list.length = 8;
-						console.log(list);
 						$("#mainWrap").html(template('newlist-template',{list}));
 					}
 				}

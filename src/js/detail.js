@@ -80,7 +80,15 @@ require(["config"],()=>{
 				//点击尺码选择或者颜色选择
 				$(".spanBtn").on("click",function(e){
 					$(this).addClass('cheched').siblings().removeClass('cheched');
-					$(this).parent().find("#wrapcolor").html($(this).css('color'));
+
+					//将颜色转换为16进制
+					let rgb = $(this).css('color').split(',');
+					let r = parseInt(rgb[0].split('(')[1]);
+					let g = parseInt(rgb[1]);
+					let b = parseInt(rgb[2].split(')')[0]);
+					let hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+					
+					$(this).parent().find("#wrapcolor").html(hex);
 					$(this).parent().find("#wrapsize").html($(this).html());
 					$(".tips").hide();
 				})
@@ -129,11 +137,13 @@ require(["config"],()=>{
 				if(cart){//购物车不为空
 					cart = JSON.parse(cart);
 
-					//由于数据的随机性，同一id的商品名称会不同
-					//方便看出不同，将id相同的商品名称改为一致
+					//由于数据的随机性，同一id的商品名称,随机颜色，单价会不同
+					//方便看出不同，将id相同的商品的随机数量值改为一致
 					cart.forEach(item=>{
 						if(item.id === this.cartdata.id){
 							item.shopName = this.cartdata.shopName;
+							item.colors = this.cartdata.colors;
+							item.price = this.cartdata.price;
 						}
 					})
 
@@ -151,7 +161,6 @@ require(["config"],()=>{
 					}else{
 						cart.push(this.cartdata);
 					}
-					console.log(this.cartdata);
 
 
 				}else{//购物车为空
@@ -161,8 +170,9 @@ require(["config"],()=>{
 
 				localStorage.setItem('cart',JSON.stringify(cart));
 
-				//调用计算商品数量的方法
+				//调用计算商品数量的方法,调用渲染购物车预览
 				header.calcCartNum();
+				header.renderSmallCart();
 
 			}
 

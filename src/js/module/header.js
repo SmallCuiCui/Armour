@@ -1,6 +1,6 @@
 
 //header模块
-define(["jquery","cookie"], $ =>{
+define(["jquery","template","cookie"], ($ ,template) =>{
 	class Header{
 		constructor(){
 			this.container = $("header");
@@ -8,15 +8,22 @@ define(["jquery","cookie"], $ =>{
 		}
 		load(){
 			this.container.load("/htmls/module/header.html", ()=>{
+
+				//绑定事件
 				this.bindEvent();
+
 				//取得kooie，判断是否登录
 				this.showUser();
+
+				//渲染购物车预览
+				this.renderSmallCart()
 
 				//计算购物车数量
 				this.calcCartNum();
 			});
 		}
 		bindEvent(){
+			let _this = this;
 			$("#man").on("click",() =>{
 				//设置页面mans,womans,child
 				$.cookie("html","mans",{path:'/'});
@@ -37,6 +44,39 @@ define(["jquery","cookie"], $ =>{
 				$.cookie("username","",{path:'/'});
 				this.showUser();
 			})
+
+			//点击商品预览的删除商品
+			$("#smallCart").on("click",".delBtn",function(){
+				let index = Number($(this).parents('li').attr('data-index'));
+				_this.cart.splice(index,1);
+				let cart = _this.cart;
+				localStorage.setItem("cart",JSON.stringify(cart));
+				//重新渲染购物车预览 与 购物车上面的数量
+				_this.renderSmallCart();
+				_this.calcCartNum();
+			})
+		}
+		renderSmallCart(){
+			this.cart = JSON.parse(localStorage.getItem('cart'));
+			console.log(this.cart);
+
+			if(this.cart){//购物车存在
+				if(this.cart.length == 0){//购物车为空，预览不显示
+					$("#smallCart").hide();
+				}else{
+					let list = this.cart;
+					$("#smallCart").html(template("smallCartModel",{list}));
+
+					//计算预览购物车商品总价
+					let allMoney = 0;
+					this.cart.forEach(item=>{
+						allMoney += item.num * item.price;
+					})
+					$("#cartTotalMoney").html(allMoney);
+				}
+			}else{//购物车没有，预览不显示
+				$("#smallCart").hide();
+			}
 		}
 
 		showUser(){

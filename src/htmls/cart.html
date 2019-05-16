@@ -88,8 +88,8 @@
 										<p class="checkP">颜色 : <span>{{shop.color}}</span></p>
 										<ul class="checkUl">
 											<li class="checkLi show">
-												<div class="colorCon"></div>
-												<span>蜜桃粉</span>
+												<div class="colorCon" style="background-color: {{shop.color}}"></div>
+												<span id="colorSpan">{{shop.color}}</span>
 												<i class="iconfont icon-fanhui-copy-copy-copy-copy"></i>
 												<i class="iconfont icon-up hidden"></i>
 											</li>
@@ -106,7 +106,7 @@
 										<p class="checkP">尺码 : <span>{{shop.size}}</span></p>
 										<ul class="checkUl">
 											<li class="checkLi show">
-												<span>M</span>
+												<span id="sizeSpan">{{shop.size}}</span>
 												<i class="iconfont icon-fanhui-copy-copy-copy-copy"></i>
 												<i class="iconfont icon-up hidden"></i>
 											</li>

@@ -401,6 +401,38 @@
 				<!-- 购物车中商品数量 -->
 				<span class="cartNum" id="cartNum">0</span>
 			</a>
+
+			<!--鼠标划过购物车 购物车预览 -->
+			<div class="smallCart" id="smallCart"></div>
+
+			<script type="text/html" id="smallCartModel">
+				<ul>
+					{{each list shop index}}
+					<li data-index={{index}}>
+						<div class="shopImg">
+							<img src="/images/model.jpg">
+						</div>
+						<div class="shopInfo">
+							<h5>{{shop.shopName}}</h5>
+							<ol>
+								<li>颜色：<font>{{shop.color}}</font></li>
+								<li>尺码：<font>{{shop.size}}</font></li>
+								<li>数量：<font>{{shop.num}}</font></li>
+								<li>价格：<font>{{shop.price}}</font></li>
+							</ol>
+							<span class="delBtn">删除</span>
+						</div>
+					</li>
+					{{/each}}
+				</ul>
+
+				<div class="allInfo">
+					<p>共<span>{{list.length}}</span>件商品</p>
+					<h6>商品总金额 <span id="cartTotalMoney">0</span></h6>
+				</div>
+				<a href="/htmls/cart.html" class="goCartBtn">查看购物车并结算</a>
+			</script>
+
 		</li>
 	</ul>
 	

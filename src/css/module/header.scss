@@ -65,6 +65,7 @@ $font-size:12px 14px 17px 18px 20px 24px;
 nav{
 	height:60px;
 	position:relative;
+	border:1px solid #c7c7c7;
 
 	.logo{
 		height:60px;
@@ -231,13 +232,13 @@ nav{
 
 	.nav-right{
 		float:right;
-		height:36px;
+		height:50px;
 		font-size:nth($font-size,1);
 		margin-top:12px;
 		margin-right:20px;
 		//overflow:hidden;
 
-		li{
+		>li{
 			margin-right:40px;
 			height:36px;
 			line-height:36px;
@@ -268,6 +269,7 @@ nav{
 			// 登录注册
 			&:nth-child(2){
 				display:none;
+				margin-right:10px;
 				a{
 					padding:0 8px;
 					color:nth($color,1);
@@ -291,6 +293,7 @@ nav{
 				max-width:80px;
 				position:relative;
 				overflow:visible;
+				margin-right:10px;
 				a{
 					display:inline-block;
 					width:100%;
@@ -331,10 +334,11 @@ nav{
 
 			//购物车
 			&:nth-child(4){
-				margin-right:10px;
+				padding-right:10px;
+				padding-left:30px;
 				position:relative;
+				height:100%;
 				a{
-					
 					padding-right: 8px;
 					color:nth($color,1);
 
@@ -354,6 +358,109 @@ nav{
 						color:white;
 						font-size:12px;
 					}
+				}
+				&:hover .smallCart{
+					display:block;
+				}
+
+				// 预览购物车 
+				.smallCart{
+					display:none;
+					position:absolute;
+					top:48px;
+					right:-55px;
+					width:370px;
+					max-height:485px;
+					border:1px solid #1d1d1d;
+					border-right:0;
+					overflow:hidden;
+					background-color:white;
+
+					ul{
+						max-height:340px;
+						overflow:auto;
+						padding:20px;
+						padding-bottom:0;
+						box-sizing:border-box;
+						>li{
+							overflow:hidden;
+							margin-bottom:28px;
+							position:relative;
+							.shopImg{
+								float:left;
+								width:100px;
+								height:120px;
+								margin-right:20px;
+								border:1px solid #c7c7c7;
+								overflow:hidden;
+
+								img{
+									widht:100px;
+									height:120px;
+								}
+							}
+							.shopInfo{
+								float:left;
+								font-size:14px;
+								width:150px;
+
+								h5{
+									color:#1d1d1d;
+									height:18px;
+									line-height:18px;
+									margin-bottom:15px;
+									overflow:hidden;
+									white-space:nowrap;
+									text-overflow:ellipsis;
+								}
+								ol{
+									li{
+										color:#c7c7c7;
+										height:22px;
+										line-height:22px;
+										font{
+											color:#1d1d1d;
+										}
+									}
+								}
+
+								.delBtn{
+									position:absolute;
+									right:0;
+									bottom:-5px;
+									color:#c7c7c7;
+									text-decoration:underline;
+									cursor:pointer;
+								}
+							}
+						}
+					}
+
+					.allInfo{
+						border-top:1px solid #1d1d1d;
+						padding:20px 20px;
+						display:flex;
+						justify-content:space-between;
+						font-size:12px;
+						h6{
+							span{
+								color:#ea212e;
+							}
+						}
+					}
+					.goCartBtn{
+						display:block;
+						width:340px;
+						height:44px;
+						line-height:44px;
+						margin-left:20px;
+						margin-bottom:20px;
+						text-align:center;
+						background-color:#ea212e;
+						color:white;
+						font-size:12px;
+					}
+
 				}
 			}
 		}
