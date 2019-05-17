@@ -9,10 +9,10 @@ require(["config"],()=>{
 				this.render();
 				this.bindEvents();
 
-				//初始化一个空的条件数组
+				//初始化一个空的条件数组,存放筛选条件
 				//前七个存放可选，第八个存放删除所有
 				this.condition = [];
-				localStorage.setItem("condition",this.condition)
+				localStorage.setItem("condition",JSON.stringify(this.condition));
 			}
 			render(){
 
@@ -61,32 +61,46 @@ require(["config"],()=>{
 				$(".checkBtns").on("click",'li',function(e){
 					let text = $(this).text();
 					let dataIndex = Number($(this).parent().attr('data-index'));
-					
 					_this.condition[dataIndex] = text;
-					localStorage.setItem("condition",_this.condition)
+					//只要存在条件，就有清除所有标签
+					_this.condition[8] = "清除所有选项";
+					//localStorage.setItem("condition",_this.condition);
+					localStorage.setItem("condition",JSON.stringify(_this.condition));
+
+					_this.renderCondition();
 
 					//第一次添加，要添加清除所有
-					if($("#labelBox").html() == ''){
+					/*if($("#labelBox").html() == ''){
 						$("#labelBox").html('<li id="clearAll">清除所有选项</li>');
 						$("#labelBox").prepend('<li>'+text+'<i class="iconfont icon-X-copy"></i></li>')
 					}else{
 						$("#labelBox").prepend('<li>'+text+'<i class="iconfont icon-X-copy"></i></li>')
 
-					}
+					}*/
 				})
 
 				//点击清除所有条件
 				$("#labelBox").on("click",'#clearAll',function(){
-					$("#labelBox").html('');
 					_this.condition = [];
+					localStorage.setItem("condition",JSON.stringify(_this.condition));
+					_this.renderCondition();
 				})
 
 				//点击已选条件的删除
 				$("#labelBox").on("click",".iconfont",function(){
+					//最后两个标签全部删除
 					if($(this).parents('.labelBox').children().length == 2){
-						$("#labelBox").html('');
+						_this.condition = [];
+						localStorage.setItem("condition",JSON.stringify(_this.condition));
+						_this.renderCondition();
+						// $("#labelBox").html('');
 					}else{
-						$(this).parent().remove();
+						let dataIndex = Number($(this).parent().attr("data-index"));
+						console.log(dataIndex);
+						_this.condition[dataIndex] = "";
+						localStorage.setItem("condition",JSON.stringify(_this.condition));
+						_this.renderCondition();
+						// $(this).parent().remove();
 					}
 				})
 			}
@@ -139,7 +153,21 @@ require(["config"],()=>{
 			}
 			//渲染选择的筛选条件
 			renderCondition(){
-
+				this.condition = localStorage.getItem("condition");
+				if(this.condition){
+					this.condition = JSON.parse(this.condition);
+					let html = "";
+					this.condition.forEach((item,index)=>{
+						if(item){
+							if(index === 8){
+								html += '<li id="clearAll" >清除所有选项</li>';
+							}else{
+								html += '<li data-index='+index+'>'+item+'<i class="iconfont icon-X-copy"></i></li>';
+							}
+						}
+					})
+					$("#labelBox").html(html);
+				}
 			}
 		}
 		new Newlist();

@@ -15,8 +15,9 @@
 	</div>
 
 	<script type="text/html" id="detailModle">
+
 		<div class="picture">
-			<div class="view_thumbs" id="gal1">
+			<!-- <div class="view_thumbs" id="gal1">
 				<ul class="view-ul">
 					<li class="current">
 						<a href="#" data-image="{{data.images[0]}}" data-zoom-image="{{data.images[0]}}">
@@ -48,8 +49,37 @@
 			<div class="view_bd">
 				<img class="zoom-img" id = "showImg" src="{{data.images[0]}}" data-zoom-image="{{data.images[0]}}"/>
 				<p>移入鼠标，查看放大效果</p>
+			</div> -->
+
+			<div class="tb-booth tb-pic tb-s310">
+				<a href="{{data.images[0]}}"><img src="{{data.images[0]}}" alt="美女" rel="{{data.images[0]}}" class="jqzoom" /></a>
+				<p>移入鼠标，查看放大效果</p>
 			</div>
+
+			<ul class="tb-thumb" id="thumblist">
+				<li class="tb-selected">
+					<div class="tb-pic tb-s40"><a href="#"><img src="{{data.images[0]}}" mid="{{data.images[0]}}" big="{{data.images[0]}}"></a>
+					</div>
+				</li>
+				<li>
+					<div class="tb-pic tb-s40"><a href="#"><img src="{{data.images[1]}}" mid="{{data.images[1]}}" big="{{data.images[1]}}"></a></div>
+				</li>
+				<li>
+					<div class="tb-pic tb-s40"><a href="#"><img src="{{data.images[2]}}" mid="{{data.images[2]}}" big="{{data.images[2]}}"></a></div>
+				</li>
+				<li>
+					<div class="tb-pic tb-s40"><a href="#"><img src="{{data.images[3]}}" mid="{{data.images[3]}}" big="{{data.images[3]}}"></a></div>
+				</li>
+				<li>
+					<div class="tb-pic tb-s40"><a href="#"><img src="{{data.images[4]}}" mid="{{data.images[4]}}" big="{{data.images[4]}}"></a></div>
+				</li>
+			</ul>
+
+
+
 		</div>
+
+
 		<div class="content">
 			<h5>{{data.shopName}}</h5>
 			<h6>￥{{data.price}}</h6>

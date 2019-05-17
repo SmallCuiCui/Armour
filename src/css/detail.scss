@@ -3,6 +3,12 @@
 @import "module/footer.scss";
 @import "module/shopDis.scss";
 
+.zoomDiv{
+	// position:absolute;
+	top:200px !important;
+	right:20px;
+	z-index:1000;
+}
 
 .detaiContainer{
 	padding:56px 20px;
@@ -12,11 +18,13 @@
 
 	.picture{
 		height:100%;
-		.view_thumbs{
+		//小图样式
+		//.view_thumbs{
+		.tb-thumb{
 			float:left;
 			width:54px;
 			margin-right:50px;
-			ul{
+			//ul{
 				li{
 					margin-bottom:10px;
 					img{
@@ -25,10 +33,11 @@
 					}
 				}
 				
-			}
+			//}
 		}
-
-		.view_bd{
+		//大图样式
+		//.view_bd{
+		.tb-booth{
 			float:right;
 			width:607px;
 			height:100%;
@@ -152,6 +161,12 @@
 			}
 		}
 	}
+}
+
+// 放大镜样式
+.zoomWindowContainer div{
+
+	background-size:500px 500px !important;
 }
 
 

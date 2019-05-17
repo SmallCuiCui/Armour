@@ -84,7 +84,7 @@ require(["config"],()=>{
 					
 				})
 
-				//点击确定，也采用全部，官网也是。。
+				//点击确定，购物车重新渲染
 				this.tbody.on("click",'.okBtn',function(e){
 
 					//更新数据

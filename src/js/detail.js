@@ -180,13 +180,29 @@ require(["config"],()=>{
 			zoom(){
 				// 点击切换+放大镜 插件
 				//大图
-				$(".zoom-img").elevateZoom({
+				/*$(".zoom-img").elevateZoom({
 					gallery:'gal1',//小图容器
 					cursor: 'pointer',
 					galleryActiveClass: 'active',
 					borderSize:'1',    
 					borderColor:'#888'
+				});*/
+
+				$(document).ready(function() {
+				
+				$(".jqzoom").imagezoom();
+
+				$("#thumblist li a").click(function() {
+
+					$(this).parents("li").addClass("tb-selected").siblings().removeClass("tb-selected");
+
+					$(".jqzoom").attr('src', $(this).find("img").attr("mid"));
+
+					$(".jqzoom").attr('rel', $(this).find("img").attr("big"));
+
 				});
+
+			});
 			}
 		}
 		new Detail();
