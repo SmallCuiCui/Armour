@@ -180,15 +180,16 @@ require(["config"],()=>{
 			zoom(){
 				// 点击切换+放大镜 插件
 				//大图
-				/*$(".zoom-img").elevateZoom({
+				$(".zoom-img").elevateZoom({
 					gallery:'gal1',//小图容器
 					cursor: 'pointer',
 					galleryActiveClass: 'active',
 					borderSize:'1',    
-					borderColor:'#888'
-				});*/
+					borderColor:'#888',
+					lensShape:"round"
+				});
 
-				$(document).ready(function() {
+				/*$(document).ready(function() {
 				
 				$(".jqzoom").imagezoom();
 
@@ -202,7 +203,7 @@ require(["config"],()=>{
 
 				});
 
-			});
+			});*/
 			}
 		}
 		new Detail();

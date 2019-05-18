@@ -4,12 +4,21 @@
 @import "module/shopDis.scss";
 
 .zoomDiv{
-	// position:absolute;
+	position:absolute;
 	top:200px !important;
 	right:20px;
 	z-index:1000;
 }
-
+//鼠标周围圆形样式
+.zoomLens{
+	width:200px !important;
+	height:200px !important;
+}
+//放大
+.zoomWindowContainer div{
+	width:500px !important;
+	height:500px !important;
+}
 .detaiContainer{
 	padding:56px 20px;
 	width:100%;
@@ -19,8 +28,8 @@
 	.picture{
 		height:100%;
 		//小图样式
-		//.view_thumbs{
-		.tb-thumb{
+		.smallPicture{
+		// .tb-thumb{
 			float:left;
 			width:54px;
 			margin-right:50px;
@@ -36,13 +45,13 @@
 			//}
 		}
 		//大图样式
-		//.view_bd{
-		.tb-booth{
+		.showPicture{
+		// .tb-booth{
 			float:right;
 			width:607px;
 			height:100%;
 			position:relative;
-			img{
+			>img{
 				height:100%;
 				width:100%;
 

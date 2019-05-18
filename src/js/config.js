@@ -12,8 +12,8 @@ require.config({
 		"template":"libs/art-template/template-web",
 		"cookie":"libs/jquery-plugins/jquery.cookie",
 		"fly":"libs/jquery-plugins/jquery.fly",//添加购物车时的动画效果
-		//"zoom":"libs/jquery-plugins/jquery.elevateZoom-3.0.8.min",//放大镜插件
-		"zoom":"libs/jquery-plugins/jquery.imagezoom.min",//放大镜插件2
+		"zoom":"libs/jquery-plugins/jquery.elevateZoom-3.0.8.min",//放大镜插件
+		// "zoom":"libs/jquery-plugins/jquery.imagezoom.min",//放大镜插件2
 		"swiper":"libs/swiper/js/swiper"//轮播图插件
 	},
 	// 垫片， 给不满足AMD规范的插件又要依赖于别的模块
