@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+	<title>购物车</title>
+
+	<link rel="stylesheet" type="text/css" href="/libs/font/iconfont.css">
+	<link rel="stylesheet" type="text/css" href="/css/confirmOrder.css">
+</head>
+<body>
+
+	<!-- 此页面header部分有差别，直接编辑，不用模块引入 -->
+	<header>
+		
+		<!-- 头部顶的黑色信息栏 -->
+		<ul class="header-top">
+			<li>全场满199元免运费</li>
+			<li><a href="#"><i class="iconfont icon-dianhua"></i><span>4008-206-528</span></a></li>
+
+			<li><a href="#"><i class="iconfont icon-xinxiduanxinsixinduihua"></i><span>在线客服</span></a></li>
+
+			<li><a href="#"><i class="iconfont icon-dizhi"></i><span>线下门店</span></a></li>
+		</ul>
+
+		<!-- 导航 -->
+		<nav>
+			<div class="logo"><a href="/"><img src="/images/logo.jpg"></a></div>
+		</nav>
+
+	</header>
+
+	<div class="main-Wrap">
+		<!-- 内容区 -->
+		<div>
+			<ul>
+				<li>
+					<div class="adress">
+						<h5>
+							<span>配送地址</span>
+							<div>
+								<a href="javascript:;"><i class="iconfont "></i>新增配送地址</a>
+								<a href="javascript:;"><i class="iconfont "></i>显示全部地址</a>
+							</div>
+							
+						</h5>
+						<div>
+							<p>
+								<span>12121212</span>
+								<span>18281575618</span>
+								<span>CC</span>
+								<span>四川省</span>
+								<span>成都市</span>
+								<span>武侯区</span>
+								<span>力宝大厦18楼</span>
+							</p>
+						</div>
+					</div>
+					<div class="newAdress" style="display: none;">
+						<h5>新建配送地址</h5>
+						<div>
+							<div>
+								<div>
+									<p>收件人姓名</p>
+									<input type="text" name="" placeholder="请输入收件人姓名">
+								</div>
+								<div>
+									<p>手机号码</p>
+									<input type="text" name="" placeholder="请输入收件人手机号码">
+								</div>
+							</div>
+							<div>
+								<div>
+									<p>地址</p>
+									<input type="text" placeholder="请输入省，如'四川省'" name="">
+									<input type="text" placeholder="请输入市，如'成都市'" name="">
+									<input type="text" placeholder="请输入区，如'武侯区'" name="">
+									<input type="text" placeholder="请输入街道，门牌号码等详细地址" name="">
+								</div>
+							</div>
+							<div>
+								<p>
+									<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
+									<span>设为默认地址</span>
+								</p>
+							</div>
+							<div>
+								<a href="javascript:;" class="whiteBtn">取消</a>
+								<a href="javascript:;" class="blackBtn">保存并使用该地址</a>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<h5><span>配送方式</span><span>顺丰快递</span></h5>
+				</li>
+				<li>
+					<h5>支付方式</h5>
+					<ol>
+						<li>
+							<i class="iconfont "></i>
+							<span>微信</span>
+							<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
+						</li>
+						<li>
+							<i class="iconfont "></i>
+							<span>支付宝</span>
+							<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
+						</li>
+						<li>
+							<i class="iconfont "></i>
+							<span>网银</span>
+							<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
+						</li>
+					</ol>
+				</li>
+				<li>
+					<h5>发票</h5>
+					<ol>
+						<li>
+							<span>不需要</span>
+							<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
+						</li>
+						<li>
+							<span>个人</span>
+							<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
+						</li>
+						<li>
+							<span>公司</span>
+							<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
+						</li>
+					</ol>
+				</li>
+				<li>
+					<h5>优惠</h5>
+					<div>
+						<input type="text" name="" placeholder="请输入优惠码">
+						<a href="javascript:;">使用</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!-- 已选商品展示区 -->
+		<div></div>
+	</div>
+	
+
+	<footer>
+		<ul>
+			<li>CopyRight @2019 Under Aimour,Inc.</li>
+			<li>沪ICP备12034417</li>
+			<li>
+				<i class="iconfont icon-shenggonganting"></i>
+				<span>电子营业执照</span>
+			</li>
+			<li>
+				<i class="iconfont icon-shenggonganting"></i>
+				<span>沪公网安备 31010102003916</span>
+			</li>
+		</ul>
+	</footer>
+
+
+	<script src="/libs/require/require.min.js" data-main = "/js/confirmOrder.js" ></script>
+</body>
+</html>

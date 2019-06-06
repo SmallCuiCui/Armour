@@ -1,0 +1,26 @@
+@import "module/base.scss";
+@import "module/header.scss";
+
+
+
+
+// footer样式。同购物车footer
+footer{
+	height:80px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	background-color:#f5f5f5;
+	ul{
+		display:flex;
+		li{
+			font-size:12px;
+			color:#7c7c7c;
+			padding:1px 16px;
+			border-right:1px solid #c7c7c7;
+			&:last-child{
+				border:none;
+			}
+		}
+	}
+}
