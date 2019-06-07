@@ -33,19 +33,55 @@
 
 	<div class="main-Wrap">
 		<!-- 内容区 -->
-		<div>
+		<div class="main-left">
 			<ul>
-				<li>
-					<div class="adress">
+				<li class="adress">
+					<div class="adressBox">
 						<h5>
 							<span>配送地址</span>
 							<div>
-								<a href="javascript:;"><i class="iconfont "></i>新增配送地址</a>
-								<a href="javascript:;"><i class="iconfont "></i>显示全部地址</a>
+								<a href="javascript:;" id="addAdress"><i class="iconfont "></i>新增配送地址</a>
+								<a href="javascript:;" id="showAll"><i class="iconfont "></i>显示全部地址</a>
+								<a href="javascript:;" id="hideAll" style="display: none;"><i class="iconfont "></i>收起全部地址</a>
 							</div>
-							
 						</h5>
+
 						<div>
+							<!-- 显示所有地址，列表，默认只显示默认地址，没有地址则不显示 -->
+							<!-- 点击显示全部地址时，全部显示 -->
+							<p class="ac">
+								<span>12121212</span>
+								<span>18281575618</span>
+								<span>CC</span>
+								<span>四川省</span>
+								<span>成都市</span>
+								<span>武侯区</span>
+								<span>力宝大厦18楼</span>
+								<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
+							</p>
+						</div>
+
+						<ul>
+							<p>
+								<span>88888</span>
+								<span>18281575618</span>
+								<span>CC</span>
+								<span>四川省</span>
+								<span>成都市</span>
+								<span>武侯区</span>
+								<span>力宝大厦18楼</span>
+								<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
+							</p>
+							<p>
+								<span>444444</span>
+								<span>18281575618</span>
+								<span>CC</span>
+								<span>四川省</span>
+								<span>成都市</span>
+								<span>武侯区</span>
+								<span>力宝大厦18楼</span>
+								<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
+							</p>
 							<p>
 								<span>12121212</span>
 								<span>18281575618</span>
@@ -54,10 +90,12 @@
 								<span>成都市</span>
 								<span>武侯区</span>
 								<span>力宝大厦18楼</span>
+								<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
 							</p>
-						</div>
+						</ul>
+
 					</div>
-					<div class="newAdress" style="display: none;">
+					<div class="newAdress" >
 						<h5>新建配送地址</h5>
 						<div>
 							<div>
@@ -81,34 +119,35 @@
 							</div>
 							<div>
 								<p>
-									<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
+									<a href="javascript:;" class="checkBtn" id="defaultAdress"><i class="iconfont icon-zhengque"></i></a>
 									<span>设为默认地址</span>
 								</p>
 							</div>
 							<div>
-								<a href="javascript:;" class="whiteBtn">取消</a>
-								<a href="javascript:;" class="blackBtn">保存并使用该地址</a>
+								<a href="javascript:;" class="blackBtn" id="cancelBtn">取消</a>
+								<a href="javascript:;" class="blackBtn" id="okBtn">保存并使用该地址</a>
 							</div>
 						</div>
 					</div>
 				</li>
 				<li>
 					<h5><span>配送方式</span><span>顺丰快递</span></h5>
+					<p>*不在顺丰快递配送区域内的地址将根据当地情况选择合适的第三方快递转寄</p>
 				</li>
 				<li>
 					<h5>支付方式</h5>
-					<ol>
-						<li>
+					<ol class="payWay">
+						<li class="select">
 							<i class="iconfont "></i>
 							<span>微信</span>
 							<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
 						</li>
-						<li>
+						<li class="select">
 							<i class="iconfont "></i>
 							<span>支付宝</span>
 							<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
 						</li>
-						<li>
+						<li class="select">
 							<i class="iconfont "></i>
 							<span>网银</span>
 							<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
@@ -117,22 +156,22 @@
 				</li>
 				<li>
 					<h5>发票</h5>
-					<ol>
-						<li>
+					<ol class="fapiao">
+						<li class="select">
 							<span>不需要</span>
 							<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
 						</li>
-						<li>
+						<li class="select">
 							<span>个人</span>
 							<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
 						</li>
-						<li>
+						<li class="select">
 							<span>公司</span>
 							<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
 						</li>
 					</ol>
 				</li>
-				<li>
+				<li class="youhui">
 					<h5>优惠</h5>
 					<div>
 						<input type="text" name="" placeholder="请输入优惠码">
@@ -141,8 +180,43 @@
 				</li>
 			</ul>
 		</div>
+
 		<!-- 已选商品展示区 -->
-		<div></div>
+		<div class="main-right">
+			<div>
+				<h5>已选商品<span>共4件</span></h5>
+			</div>
+			<div>
+				<ul>
+					<li>
+						<div class="img"><img src="/images/model.jpg"></div>
+						<div class="info">
+							<h6>男士UA Sportstyle Cotton Graphic短裤</h6>
+							<ol>
+								<li>颜色：<span>钢色石楠浅灰</span></li>
+								<li>尺码：<span>S</span></li>
+							</ol>
+							<p><span>￥249</span>x<span>1</span></p>
+							<p>小计：<span>￥249</span></p>
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+			<div>
+				<p>商品金额：<span>￥249.00</span></p>
+				<p>运费：<span>￥15.00</span></p>
+				<p>优惠：<span>-￥15</span></p>
+				<p>总计：<span>￥264.00</span></p>
+				<a href="javascript:;">提交订单并支付</a>
+			</div>
+			<div>
+				<p>请您在 6小时 内完成支付</p>
+				<p>否则订单会被自动取消。Under Armour提醒您：如遇陌生电话以“支付宝账号出错”或“资金被冻结”等各种原因要求您提供支付宝等账户密码信息，多数为诈骗信息。</p>
+
+				<p>Under Armour不会在任何情况下要求您提供支付宝等账户密码信息。请您务必保护好相关个人账户安全，保持警惕，谨防诈骗。</p>
+			</div>
+		</div>
 	</div>
 	
 

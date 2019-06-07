@@ -51,6 +51,18 @@ require(["config"],()=>{
 			bindEvent(){
 				let _this = this;
 
+				// 鼠标滚动时固定头部导航
+				$(document).ready(function(){
+					$(window).scroll(function(){
+		                var scrollPos=$(window).scrollTop();
+		                if(scrollPos >=34){
+		                    $("header nav").addClass("fixed");
+		                }else{
+		                    $("header nav").removeClass("fixed");
+		                }
+		            });
+				})
+
 				//颜色，尺码选择
 				this.tbody.on("click",".checkLi",function(e){
 
