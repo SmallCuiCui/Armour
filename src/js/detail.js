@@ -1,5 +1,5 @@
 require(["config"],()=>{
-	require(["url","template","header","footer","shopDis","zoom","fly"],(url,template,header,footer,shopdis)=>{
+	require(["url","template","header","footer","shopDis","zoom","fly","cookie"],(url,template,header,footer,shopdis)=>{
 		class Detail{
 			constructor(){
 				this.container = $("#detaiContainer")
@@ -53,7 +53,15 @@ require(["config"],()=>{
 
 				//点击添加购物车
 				$("#addCart").on("click",e=>{
-					this.addcart(e);
+					//登录状态下添加购物车成功,否则提示进行登录
+					if($.cookie("username")){
+						this.addcart(e);
+					}else{
+						if(confirm("您还为进行登录，请先登录!")){
+							location.href = "/htmls/login.html";
+						}
+					}
+					
 				})
 
 				//点击立即购买

@@ -6,6 +6,7 @@ require(["config"],() =>{
 				this.inputPsw = $("#inputPsw");
 				this.loginBtn = $("#btnLogin");
 				this.checkBtn = $("#checkBtn");
+
 				
 				//标记正则是否通过验证，为true才能进行登录
 				this.regPass = false;
@@ -65,6 +66,7 @@ require(["config"],() =>{
 					//请求php
 					let user = this.user;
 					let psw = this.psw;
+
 					let jsonCallBackTest = this.jsonCallBackTest;
 					$.ajax({
 						url: url.phpBaseUrl +'login.php',
@@ -76,8 +78,8 @@ require(["config"],() =>{
 							console.log(data);
 							if(data.res_code === 1){
 								let expires = this.checkBtn.prop('checked')?{expires:10,path:'/'} : {path:'/'};
-								console.log(expires);
 								$.cookie("username",user,expires);
+								
 								alert("登录成功，即将跳转首页！");
 								location.href = '/';
 							}

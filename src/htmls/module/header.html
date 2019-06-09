@@ -383,7 +383,7 @@
 		</li>
 		<!-- 个人中心 -->
 		<li id="userLi" class="userContainer">
-			<a href="javascript:;">
+			<a href="/htmls/account.html">
 				<i class="iconfont icon-ren"></i>
 				<span id="userSpan">18281575618</span>
 			</a>
@@ -392,7 +392,7 @@
 				<li><a href="javascript:;">地址薄</a></li>
 				<li><a href="javascript:;">到货通知</a></li>
 				<li><a href="javascript:;">账户设置</a></li>
-				<li id="outLogin"><a href="javascript:;">退出通知</a></li>
+				<li id="outLogin"><a href="javascript:;">退出登录</a></li>
 			</ol>
 		</li>
 		<li id="cartLi">
@@ -410,7 +410,7 @@
 					{{each list shop index}}
 					<li data-index={{index}}>
 						<div class="shopImg">
-							<img src="/images/model.jpg">
+							<img src="{{shop.images[0]}}">
 						</div>
 						<div class="shopInfo">
 							<h5>{{shop.shopName}}</h5>

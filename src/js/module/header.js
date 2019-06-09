@@ -24,6 +24,7 @@ define(["jquery","template","cookie"], ($ ,template) =>{
 		}
 		bindEvent(){
 			let _this = this;
+
 			// 鼠标滚动时固定头部导航
 			$(document).ready(function(){
 				$(window).scroll(function(){
@@ -55,7 +56,14 @@ define(["jquery","template","cookie"], ($ ,template) =>{
 
 			//点击退出登录
 			$("#outLogin").on("click",()=>{
+				// 阻止冒泡
+				event.stopPropagation();
 				$.cookie("username","",{path:'/'});
+				alert("退出登录成功，即将跳转首页！");
+				location.href = '/';
+				// 退出登录时，无需清空购物车数据
+				/*localStorage.removeItem('cart');
+				this.calcCartNum();*/
 				this.showUser();
 			})
 
@@ -80,9 +88,9 @@ define(["jquery","template","cookie"], ($ ,template) =>{
 		}
 
 		renderSmallCart(){
-			this.cart = JSON.parse(localStorage.getItem('cart'));
-
-			if(this.cart){//购物车存在
+			let cart = localStorage.getItem('cart');
+			if(cart){
+				this.cart = JSON.parse(cart);
 				if(this.cart.length == 0){//购物车为空，预览不显示
 					$("#smallCart").hide();
 				}else{
@@ -103,13 +111,15 @@ define(["jquery","template","cookie"], ($ ,template) =>{
 		}
 
 		showUser(){
-			if($.cookie("username")){//存在登录
+			if($.cookie("username")){//存在登录,显示用户与购物车
 				$("#userLi").show();
 				$("#login").hide();
+				$("#cartLi").show();
 
 				$("#userSpan").html($.cookie("username"));
 			}else{
 				$("#login").show();
+				$("#cartLi").hide();
 				$("#userLi").hide();
 			}
 		}
@@ -117,6 +127,7 @@ define(["jquery","template","cookie"], ($ ,template) =>{
 		calcCartNum(){
 			let cart = localStorage.getItem('cart');
 			let num = 0;
+			console.log(cart);
 			if(cart){
 				cart = JSON.parse(cart);
 				num = cart.reduce((n, shop) =>{
