@@ -1,6 +1,6 @@
 require(["config"],()=>{
 
-	require(["template","shopDis"], (template,shopdis) =>{
+	require(["jquery","template","url"], ($,template,url) =>{
 		class Cart{
 			constructor(){
 				this.all = $("#allBtn");
@@ -17,18 +17,26 @@ require(["config"],()=>{
 				this.bindEvent();
 
 				//渲染购物车下面的猜你喜欢商品
-				shopdis.renderLess('hotList');
+				this.renderLess();
 			}
 			//渲染商品列表
 			render(){
-				this.cart = JSON.parse(localStorage.getItem('cart'));
-				
+				// let cart = JSON.parse(localStorage.getItem('cart'));
+				this.user = JSON.parse(localStorage.getItem('user'));
+				let cart = this.user.cart;
 				//购物车先判断存在，然后再判断有没有东西
-				if(this.cart){
-					if(this.cart.length > 0){
-						this.num = this.cart.length;
+				if(cart){
+					if(cart.length > 0){
+						this.num = cart.length;
 						$("#shopList").show();
 						$("#noGoods").hide();
+
+						// 将商品删选一遍，状态为cart以及confirm的进行渲染，状态为order的商品进行过滤
+						/*this.cart = cart.filter(function(item) {
+							// return item.status === "order";
+							return item.status === "cart" || item.status === "confirm";
+						});*/
+						this.cart = cart;
 					}else{
 						$("#shopList").hide();
 						$("#noGoods").show();
@@ -47,6 +55,22 @@ require(["config"],()=>{
 
 				//渲染合计
 				this.calcAllMoney();
+			}
+			renderLess(){
+				$.ajax({
+					url:url.baseListUrl + 'hotList',
+					type:"get",
+					dataType:"json",
+					success:data =>{
+
+						if(data.res_code == 1){
+							//调用页面有固定的模板存在
+							let list = data.res_body.list;
+							list.length = 8;
+							$("#mainWrap").html(template('newlist-template',{list}));
+						}
+					}
+				})
 			}
 			bindEvent(){
 				let _this = this;
@@ -87,8 +111,12 @@ require(["config"],()=>{
 					if(confirm("确定删除吗？")){
 						let shopIndex = Number($(this).parent().parent().attr('data-index'));
 						//从cart中 删除shopIndex 重新存本地localstorage 重新渲染
-						_this.cart.splice(shopIndex,1)
-						localStorage.setItem('cart',JSON.stringify(_this.cart));
+						_this.cart.splice(shopIndex,1);
+
+						_this.user.cart = _this.cart;
+						// localStorage.setItem('cart',JSON.stringify(_this.cart));
+						localStorage.setItem('user',JSON.stringify(_this.user));
+
 						_this.render();
 						//$(this).parent().parent().remove();
 						_this.calcAllMoney();
@@ -119,8 +147,9 @@ require(["config"],()=>{
 						_this.cart.push(ItemCart);
 					}
 
-
-					localStorage.setItem('cart',JSON.stringify(_this.cart));
+					_this.user.cart = _this.cart;
+					// localStorage.setItem('cart',JSON.stringify(_this.cart));
+					localStorage.setItem('user',JSON.stringify(_this.user));
 					_this.render();
 					_this.calcAllMoney();
 					/*console.log($(this).parents('tr')[0]);
@@ -175,6 +204,30 @@ require(["config"],()=>{
 					let num = $(this).siblings('font').html();
 					$(this).siblings('font').html(++num);
 
+				})
+
+				// 点击立即结算
+				$("#confirmBtn").on("click",function(){
+					
+					let num = $(".ischeck").parents("tr[data-index]").length;
+					if(num === 0){
+						alert("您还未选中任何商品！");
+					}else{
+						// 更改选中商品的status为confirm状态，未选中商品的status为cart
+						$("tr[data-index]").each(function(){
+							let data_index = Number($(this).attr("data-index"));
+							if($(this).find(".iconfont").hasClass("ischeck")){
+								_this.cart[data_index].status = "confirm";
+							}else{
+								_this.cart[data_index].status = "cart";
+							}
+						});
+						_this.user.cart = _this.cart;
+						// localStorage.setItem('cart',JSON.stringify(_this.cart));
+						localStorage.setItem('user',JSON.stringify(_this.user));
+						location.href = "/htmls/confirmOrder.html";
+					}
+					
 				})
 
 				

@@ -15,13 +15,11 @@ define(["jquery","url","template"],($,url,template) =>{
 			}
 
 			getData(){
-				console.log(this.data);
 				$.ajax({
 					url:url.baseListUrl + this.data.reconmand,
 					type:"get",
 					dataType:"json",
 					success: data =>{
-
 						if(data.res_code === 1){
 							let list = data.res_body.list;
 							$("#showWrap").html(template("recommandShop",{list}))

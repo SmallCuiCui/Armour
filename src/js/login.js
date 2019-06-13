@@ -74,12 +74,21 @@ require(["config"],() =>{
 						data:{user,psw},
 						dataType: 'json',
 						success: data =>{
-							//登录成功，存储cookie
-							console.log(data);
+							//登录成功，存储cookie，仅保存用户电话号码或者邮箱
 							if(data.res_code === 1){
 								let expires = this.checkBtn.prop('checked')?{expires:10,path:'/'} : {path:'/'};
 								$.cookie("username",user,expires);
-								
+
+								// 初始化用户数据，包括个人信息(对象)，购物车(对象数组)，订单(对象数组)，地址(对象数组)
+								let userNew = {
+									info:{'psw':psw,'phone':user,'name':"",'sex':"",'birthday':""},
+									cart:[],
+									order:[],
+									address:[]
+								}
+
+								localStorage.setItem('user',JSON.stringify(userNew));
+
 								alert("登录成功，即将跳转首页！");
 								location.href = '/';
 							}

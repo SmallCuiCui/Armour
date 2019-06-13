@@ -123,6 +123,9 @@ require(["config"],()=>{
 					return;
 				}
 
+				// 商品状态 cart表示在购物车中，confirm表示在结算页中，order表示已经提交订单 
+				this.cartdata.status = 'cart';
+
 				
 				//生成一张下图片，滑动到购物车的位置
 				let img = $("#showImg").prop("src");
@@ -142,10 +145,11 @@ require(["config"],()=>{
 				});
 
 				//将商品添加到本地存储
-				let cart = localStorage.getItem('cart');
-				if(cart){//购物车不为空
-					cart = JSON.parse(cart);
-
+				// let cart = localStorage.getItem('cart');
+				let user = JSON.parse(localStorage.getItem('user'));
+				if(user.cart.length >0){//购物车不为空
+					let cart = user.cart;
+					
 					//由于数据的随机性，同一id的商品名称,随机颜色，单价会不同
 					//方便看出不同，将id相同的商品的随机数量值改为一致
 					cart.forEach(item=>{
@@ -171,14 +175,15 @@ require(["config"],()=>{
 						cart.push(this.cartdata);
 					}
 
-
+					user.cart = cart;
 				}else{//购物车为空
 					//cart未定义时不能采用push放入
-					cart = [{...this.cartdata}];
+					let cart = [{...this.cartdata}];
+					user.cart = cart;
 				}
-
-				localStorage.setItem('cart',JSON.stringify(cart));
-
+				
+				localStorage.setItem('user',JSON.stringify(user));
+				// localStorage.setItem('cart',JSON.stringify(cart));
 				//调用计算商品数量的方法,调用渲染购物车预览
 				header.calcCartNum();
 				// header.renderSmallCart();
@@ -196,22 +201,6 @@ require(["config"],()=>{
 					borderColor:'#888',
 					lensShape:"round"
 				});
-
-				/*$(document).ready(function() {
-				
-				$(".jqzoom").imagezoom();
-
-				$("#thumblist li a").click(function() {
-
-					$(this).parents("li").addClass("tb-selected").siblings().removeClass("tb-selected");
-
-					$(".jqzoom").attr('src', $(this).find("img").attr("mid"));
-
-					$(".jqzoom").attr('rel', $(this).find("img").attr("big"));
-
-				});
-
-			});*/
 			}
 		}
 		new Detail();

@@ -88,9 +88,9 @@ define(["jquery","template","cookie"], ($ ,template) =>{
 		}
 
 		renderSmallCart(){
-			let cart = localStorage.getItem('cart');
-			if(cart){
-				this.cart = JSON.parse(cart);
+			let user = localStorage.getItem('user');
+			if(user){
+				this.cart = JSON.parse(user).cart;
 				if(this.cart.length == 0){//购物车为空，预览不显示
 					$("#smallCart").hide();
 				}else{
@@ -125,15 +125,17 @@ define(["jquery","template","cookie"], ($ ,template) =>{
 		}
 		//计算购物车商品数量，并渲染
 		calcCartNum(){
-			let cart = localStorage.getItem('cart');
+			let user = localStorage.getItem('user');
 			let num = 0;
-			console.log(cart);
-			if(cart){
-				cart = JSON.parse(cart);
-				num = cart.reduce((n, shop) =>{
-					n += shop.num;
-					return n;
-				},0);
+			if(user){
+				let cart = JSON.parse(user).cart;
+				if(cart.length>0){
+					num = cart.reduce((n, shop) =>{
+						n += shop.num;
+						return n;
+					},0);
+				}
+				
 			}
 			$('#cartNum').html(num);
 			

@@ -1,12 +1,12 @@
 
 //注意此处参数一为一个数组
 require(["config"],()=>{
-	require(["url","template","header","footer","jquery","shopDis"],(url,template,header,footer,$,shopdis) =>{
+	require(["url","template","header","footer","jquery"],(url,template,header,footer,$) =>{
 
 		class Newlist{
 			constructor(){
 
-				this.render();
+				this.render("all");
 				this.bindEvents();
 
 				//初始化一个空的条件数组,存放筛选条件
@@ -14,16 +14,90 @@ require(["config"],()=>{
 				this.condition = [];
 				localStorage.setItem("condition",JSON.stringify(this.condition));
 			}
+
 			render(){
 
 				//渲染商品列表
-				shopdis.render('hotList');
+				this.renderShop("all");
 
 				//渲染页面导航,页面名称
 				this.renderPageNav();
 
 				//渲染条件
 				this.renderCondition();
+			}/*
+			getData(){
+				$.ajax({
+					url:url.baseListUrl + 'hotList',
+					type:"get",
+					dataType:"json",
+					success:data =>{
+
+						if(data.res_code == 1){
+							this.list = data.res_body.list;
+							
+						}
+					}
+				})
+			}*/
+			renderShop(condition){
+				// 价格由低到高排序
+				if(condition === "lowPrice"){
+					this.list.sort(sortBy('low'))
+				}else if(condition === "highPrice"){//价格由高到低排序
+					this.list.sort(sortBy('high'))
+				}else if(condition === "all"){
+
+					// 重新获取数据
+					$.ajax({
+						url:url.baseListUrl + 'hotList',
+						type:"get",
+						dataType:"json",
+						success:data =>{
+							if(data.res_code == 1){
+								this.list = data.res_body.list;
+								let list = this.list;
+								$("#mainWrap").html(template('newlist-template',{list}));
+							}
+						}
+					})
+				}else{//价格区间筛选-过滤
+					let price = condition.split('-');
+					let min = Number(price[0].slice(1));
+					let max = Number(price[1].slice(1));
+					this.list = this.list.filter(function(item){
+						return item.price <= max && item.price >= min;
+					})
+				}
+
+				let list = this.list;
+				$("#mainWrap").html(template('newlist-template',{list}));
+
+				// 商品排序方法，由低到高/由高到低
+				function sortBy(condition){
+					if(condition === "low"){
+						 return function(a,b) {
+					        return a.price - b.price;
+					    }
+					}else if(condition === "high"){
+						 return function(a,b) {
+					        return b.price - a.price;
+					    }
+					}
+				}
+			}
+
+			sortBy(condition){
+				if(condition === "low"){
+					 return function(a,b) {
+					 	console.log(a);
+				        return a.price - b.price;
+				    }
+				}else if(condition === "high"){
+					 return function(a,b) {
+				        return b.price - a.price;
+				    }
+				}
 			}
 			bindEvents(){
 				let _this = this;
@@ -60,6 +134,15 @@ require(["config"],()=>{
 				//点击选择商品条件,添加到商品列
 				$(".checkBtns").on("click",'li',function(e){
 					let text = $(this).text();
+					// 价格筛选
+					if($(this).parents('ol[data-index]').attr('data-index') == 5){
+						_this.renderShop(text);
+					}
+					// 价格排序
+					if($(this).parents('ol[data-index]').attr('data-index') == 6){
+						let sort = $(this).attr('class');
+						_this.renderShop(sort);
+					}
 					let dataIndex = Number($(this).parent().attr('data-index'));
 					_this.condition[dataIndex] = text;
 					//只要存在条件，就有清除所有标签
@@ -84,6 +167,7 @@ require(["config"],()=>{
 					_this.condition = [];
 					localStorage.setItem("condition",JSON.stringify(_this.condition));
 					_this.renderCondition();
+					_this.renderShop("all");
 				})
 
 				//点击已选条件的删除

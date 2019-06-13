@@ -20,10 +20,10 @@
 				<p>18281575618</p>
 			</div>
 			<ul>
-				<li class="ac"><a href="javascript:;">我的订单</a></li>
-				<li><a href="javascript:;">地址簿</a></li>
-				<li><a href="javascript:;">到货通知</a></li>
-				<li><a href="javascript:;">账户设置</a></li>
+				<li class="ac nav-li"><a href="/htmls/account.html?type=0">我的订单</a></li>
+				<li class="nav-li"><a href="/htmls/account.html?type=1">地址簿</a></li>
+				<li class="nav-li"><a href="/htmls/account.html?type=2">到货通知</a></li>
+				<li class="nav-li"><a href="/htmls/account.html?type=3">账户设置</a></li>
 			</ul>
 			<div class="other">
 				<p>如您有任何问题可咨询我们的<br>客户服务部门</p>
@@ -34,98 +34,108 @@
 		<div class="cont-right">
 			<ul>
 				<!-- 我的订单内容区 -->
-				<li>
+				<li class="box-li ac">
 					<h5>我的订单</h5>
 					<ul>
-						<li class="ac">
+						<li class="ac order-li">
 							<i class="iconfont icon-order"></i>
 							<span>全部订单</span>
 						</li>
-						<li>
+						<li class="order-li">
 							<i class="iconfont icon-qiabao"></i>
 							<span>待付款</span>
 						</li>
-						<li>
+						<li class="order-li">
 							<i class="iconfont icon-huoche"></i>
 							<span>待发货</span>
 						</li>
-						<li>
+						<li class="order-li">
 							<i class="iconfont icon-weibiaoti--"></i>
 							<span>已发货</span>
 						</li>
 					</ul>
 
 					<ol class="order-class">
-						<li>
+						<li id="orderWrap" style="display: list-item;">
 							<!-- 全部订单 -->
+							<script type="text/html" id="orderModule">
 							<ul>
-								<li>
+								{{each orders item index}}
+								<li index-order = {{index}}>
 									<div class="order-top">
 										<div class="info">
-											<p>下单时间：<span>2019-06-06</span>订单编号：<font>UA20493696</font></p>
-											<p>配送地址： 四川省成都市武侯区力宝大厦</p>
-											<p>共1件商品 商品总计：￥449.00</p>
+											<p>下单时间：<span>{{item.time}}</span>订单编号：<font>UA2049{{index}}</font></p>
+											<p>配送地址： {{item.address}}</p>
+											<p>共{{item.shopNum}}件商品 商品总计：￥{{item.totalMoney}}</p>
 										</div>
 										<div class="operation">
+											{{if item.status=='0'}}
 											<p>待付款</p>
 											<div>
-												<a href="javascript:;" class="blackBtn">取消订单</a>
-												<a href="javascript:;" class="blackBtn">立即支付</a>
+												<a href="javascript:;" class="blackBtn cancelOrder">取消订单</a>
+												<a href="javascript:;" class="blackBtn payOrder">立即支付</a>
 											</div>
+											{{else if item.status=='1'}}
+											<p>订单已完成</p>
+											{{else}}
+											<p>订单已取消</p>
+											{{/if}}
 										</div>
 									</div>
 									<div class="order-bot">
 										<ol>
+											{{each item.shopList shop}}
 											<li>
-												<div><img src="/images/model.jpg"></div>
+												<div><img src="{{shop.images[0]}}"></div>
 												<div>
-													<h6>女士UA RUSH运动内衣 —中强度</h6>
-													<p>颜色：尘褐色(057)</p>
-													<p>尺码：S</p>
+													<h6>{{shop.shopName}}</h6>
+													<p>颜色：{{shop.color}}</p>
+													<p>尺码：{{shop.size}}</p>
 												</div>
 												<div>
-													<p>￥449x1</p>
-													<p>小计￥449</p>
+													<p>￥{{shop.price}} x {{shop.num}}</p>
+													<p>小计￥{{shop.num*shop.price}}</p>
 												</div>
 											</li>
-											<li>
-												<div><img src="/images/model.jpg"></div>
-												<div>
-													<h6>女士UA RUSH运动内衣 —中强度</h6>
-													<p>颜色：尘褐色(057)</p>
-													<p>尺码：S</p>
-												</div>
-												<div>
-													<p>￥449x1</p>
-													<p>小计￥449</p>
-												</div>
-											</li>
+											{{/each}}
 										</ol>
 									</div>
 								</li>
-								
-								<li>
-									
-								</li>
+								{{/each}}
 							</ul>
+							</script>
 						</li>
 
 						<!-- 待付款 -->
 						<li>
-							
+							<div class="noData">
+								<i class="iconfont icon-order"></i>
+								<p>您还没有此类订单</p>
+							</div>
 						</li>
 						<!-- 待发货订单 -->
-						<li></li>
+						<li>
+							<div class="noData">
+								<i class="iconfont icon-order"></i>
+								<p>您还没有此类订单</p>
+							</div>
+						</li>
 						<!-- 已发货订单 -->
-						<li></li>
+						<li>
+							<div class="noData">
+								<i class="iconfont icon-order"></i>
+								<p>您还没有此类订单</p>
+							</div>
+						</li>
 					</ol>
 				</li>
 
 				<!-- 地址簿内容区 -->
-				<li>
+				<li  class="box-li">
 					<h5>地址簿</h5>
+					<!-- 新建地址 -->
 					<div class="newAdress" >
-						<div>
+						<div class="inputBox">
 							<div>
 								<div>
 									<p>收件人姓名</p>
@@ -153,176 +163,169 @@
 							</div>
 							<div>
 								<a href="javascript:;" class="blackBtn" id="cancelBtn">取消</a>
-								<a href="javascript:;" class="blackBtn" id="okBtn">保存并使用该地址</a>
+								<a href="javascript:;" class="blackBtn" id="okBtn">保存</a>
 							</div>
 						</div>
 					</div>
 
-					<ul>
-						<p>
-							<i class="iconfont "></i>
-							<span>新建地址</span>
-						</p>
-						<li>
-							<p class="ac">
-								<span>88888</span>
-								<span>18281575618</span>
-								<span>CC</span>
-								<span>四川省</span>
-								<span>成都市</span>
-								<span>武侯区</span>
-								<span>力宝大厦18楼</span>
-								<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
+					<!-- 地址列表 -->
+					<ul id="addressWrap">
+						<script type="text/html" id="addressModule">
+							<p id="newAdressBtn">
+								<i class="iconfont icon-hao"></i>
+								<span>新建地址</span>
 							</p>
-							<!-- 编辑状态下显示编辑框 -->
-							<div></div>
-						</li>
-
-						<li>
-							<p>
-								<span>88888</span>
-								<span>18281575618</span>
-								<span>CC</span>
-								<span>四川省</span>
-								<span>成都市</span>
-								<span>武侯区</span>
-								<span>力宝大厦18楼</span>
-								<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
-							</p>
-							<!-- 编辑状态下显示编辑框 -->
-							<div></div>
-						</li>
+							{{each address item index}}
+							<li>
+								<p>
+									{{if index===0}}
+									<span>【默认】</span>
+									{{/if}}
+									<span>{{item[0]}}</span>
+									<span>{{item[1]}}</span>
+									<span>{{item[2]}}</span>
+									<span>{{item[3]}}</span>
+									<span>{{item[4]}}</span>
+									<span>{{item[5]}}</span>
+									<a href="javascript:;" class="checkBtn"><i class="iconfont icon-zhengque"></i></a>
+								</p>
+								<!-- 编辑状态下显示编辑框 -->
+								<div></div>
+							</li>
+							{{/each}}
+						</script>
 					</ul>
 				</li>
 
 				<!-- 到货通知内容区 -->
-				<li>
+				<li  class="box-li">
 					<h5>到货通知</h5>
-					<div>
+					<div class="noData">
 						<i class="iconfont icon-order"></i>
 						<p>您还没有订阅过到货通知</p>
 					</div>
 				</li>
 
 				<!-- 账户设置内容区 -->
-				<li class="ac">
+				<li class="box-li">
 					<h5>账户设置</h5>
-					<ul>
-						<li>
-							<h6>登录信息</h6>
-							<ol>
-								<li>
-									<p>邮箱：2511692877@qq.com <a href="javascript:;">验证邮箱</a></p>
-									<div class="email">
-										<p>邮箱</p>
-										<input type="text" name="" placeholder="请输入邮箱">
+					<ul id="InfoWrap">
+						<script type="text/html" id="userModule">
+							<li>
+								<h6>登录信息</h6>
+								<ol>
+									<li>
+										<p>邮箱：{{info.email}}<a href="javascript:;">验证邮箱</a></p>
+										<div class="email">
+											<p>邮箱</p>
+											<input type="text" name="" placeholder="请输入邮箱">
+											<div>
+												<a href="javascript:;" class="blackBtn cancel">取消</a>
+												<a href="javascript:;" class="blackBtn saveEmail">保存</a>
+											</div>
+										</div>
+									</li>
+									<li>
+										<p>手机号码：{{info.phone}}</p>
+										<div class="password">
+											<p>密码</p>
+											<input type="text" name="" placeholder="请输入旧密码">
+											<input type="text" name="" placeholder="请输入新密码">
+											<input type="text" name="" placeholder="确认密码密码">
+											<div>
+												<a href="javascript:;" class="blackBtn cancel">取消</a>
+												<a href="javascript:;" class="blackBtn savePsw">保存</a>
+											</div>
+										</div>
+									</li>
+									<li>
+										<a href="javascript:;" class="blackBtn cgEmail">修改邮箱</a>
+										<a href="javascript:;" class="blackBtn cgPsw">修改密码</a>
+									</li>
+								</ol>
+							</li>
+							<li>
+								<h6>个人信息</h6>
+								<ol>
+									<li>
+										<p>姓名：<span>{{info.name}}</span></p>
+										<div>
+											<input type="text" class="nameInput" placeholder="请输入姓名">
+										</div>
+									</li>
+									<li>
+										<p>性别：<span>{{info.sex}}</span></p>
+										<div>
+											<a href="javascript:;" class="sex">男</a>
+											<a href="javascript:;" class="sex">女</a>
+										</div>
+									</li>
+									<li>
+										<p>生日：<span>{{info.birthday}}</span></p>
+										<div>
+											<input type="text" class="yearInput" placeholder="请输入年">
+											<input type="text" class="monthInput" placeholder="请输入月">
+											<input type="text" class="dayInput" placeholder="请输入日">
+										</div>
 										<div>
 											<a href="javascript:;" class="blackBtn cancel">取消</a>
-											<a href="javascript:;" class="blackBtn save">保存</a>
+											<a href="javascript:;" class="blackBtn saveInfo">保存</a>
 										</div>
-									</div>
-								</li>
-								<li>
-									<p>手机号码：18281575618</p>
-									<div class="password">
-										<p>密码</p>
-										<input type="text" name="" placeholder="请输入旧密码">
-										<input type="text" name="" placeholder="请输入新密码">
-										<input type="text" name="" placeholder="确认密码密码">
+									</li>
+									<li class="xiugai">
+										<a href="javascript:;" class="blackBtn edit">修改个人信息</a>
+									</li>
+								</ol>
+							</li>
+							<li>
+								<h6>订阅信息</h6>
+								<ol>
+									<li>
+										<p>你感兴趣的商品：<span>女子装备、瑜伽、跑步</span></p>
 										<div>
-											<a href="javascript:;" class="blackBtn cancel">取消</a>
-											<a href="javascript:;" class="blackBtn save">保存</a>
+											<div class="ckeckBox">
+												<p>
+													<a href="javascript:;"><i class="iconfont icon-zhengque"></i></a>
+													<span>男子装备</span>
+												</p>
+												<p>
+													<a href="javascript:;"><i class="iconfont icon-zhengque"></i></a>
+													<span>女子装备</span>
+												</p>
+												<p>
+													<a href="javascript:;"><i class="iconfont icon-zhengque"></i></a>
+													<span>训练</span>
+												</p>
+												<p>
+													<a href="javascript:;"><i class="iconfont icon-zhengque"></i></a>
+													<span>高尔夫</span>
+												</p>
+												<p>
+													<a href="javascript:;"><i class="iconfont icon-zhengque"></i></a>
+													<span>篮球</span>
+												</p>
+												<p>
+													<a href="javascript:;"><i class="iconfont icon-zhengque"></i></a>
+													<span>瑜伽</span>
+												</p>
+												<p>
+													<a href="javascript:;"><i class="iconfont icon-zhengque"></i></a>
+													<span>跑步</span>
+												</p>
+											</div>
+											<div class="btns">
+												<a href="javascript:;" class="blackBtn cancel">取消</a>
+												<a href="javascript:;" class="blackBtn dingyueBtn">保存</a>
+											</div>
 										</div>
-									</div>
-								</li>
-								<li>
-									<a href="javascript:;" class="blackBtn">修改邮箱</a>
-									<a href="javascript:;" class="blackBtn">修改密码</a>
-								</li>
-							</ol>
-						</li>
-						<li>
-							<h6>个人信息</h6>
-							<ol>
-								<li>
-									<p>姓名：<span></span></p>
-									<div>
-										<input type="text" name="" placeholder="请输入姓名">
-									</div>
-								</li>
-								<li>
-									<p>性别：<span></span></p>
-									<div>
-										<a href="javascript:;">男</a>
-										<a href="javascript:;" class="ac">女</a>
-									</div>
-								</li>
-								<li>
-									<p>生日：<span></span></p>
-									<div>
-										<input type="text" name="" placeholder="请输入年">
-										<input type="text" name="" placeholder="请输入月">
-										<input type="text" name="" placeholder="请输入日">
-									</div>
-									<div>
-										<a href="javascript:;" class="blackBtn cancel">取消</a>
-										<a href="javascript:;" class="blackBtn save">保存</a>
-									</div>
-								</li>
-								<li class="xiugai">
-									<a href="javascript:;" class="blackBtn edit">修改个人信息</a>
-								</li>
-							</ol>
-						</li>
-						<li>
-							<h6>订阅信息</h6>
-							<ol>
-								<li>
-									<p>你感兴趣的商品：女子装备、瑜伽、跑步</p>
-									<div>
-										<p>选择你感兴趣的商品，我们将根据您的选择为您提供更贴心的服务。</p>
-										<div class="ckeckBox">
-											<p>
-												<a href="javascript:;"><i class="iconfont icon-zhengque"></i></a>
-												<span>男子装备</span>
-											</p>
-											<p>
-												<a href="javascript:;"><i class="iconfont icon-zhengque"></i></a>
-												<span>女子装备</span>
-											</p>
-											<p>
-												<a href="javascript:;"><i class="iconfont icon-zhengque"></i></a>
-												<span>训练</span>
-											</p>
-											<p>
-												<a href="javascript:;"><i class="iconfont icon-zhengque"></i></a>
-												<span>高尔夫</span>
-											</p>
-											<p>
-												<a href="javascript:;"><i class="iconfont icon-zhengque"></i></a>
-												<span>篮球</span>
-											</p>
-											<p>
-												<a href="javascript:;"><i class="iconfont icon-zhengque"></i></a>
-												<span>瑜伽</span>
-											</p>
-											<p>
-												<a href="javascript:;"><i class="iconfont icon-zhengque"></i></a>
-												<span>跑步</span>
-											</p>
-										</div>
-										<div class="btns">
-											<a href="javascript:;" class="blackBtn cancel">取消</a>
-											<a href="javascript:;" class="blackBtn">保存</a>
-										</div>
-									</div>
-								</li>
-								<li>
-									<a href="javascript:;" class="blackBtn edit">修改订阅信息</a>
-								</li>
-							</ol>
-						</li>
-					</ul>
+									</li>
+									<li>
+										<a href="javascript:;" class="blackBtn edit">修改订阅信息</a>
+									</li>
+								</ol>
+							</li>
+						</ul>
+					</script>
 				</li>
 			</ul>
 		</div>
