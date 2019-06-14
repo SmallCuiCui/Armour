@@ -18,7 +18,6 @@ require(["config"],()=>{
 				
 				// 初始订单默认地址
 				this.order.address = this.user.address[0];
-
 				// 渲染已选商品，购物车中商品status为confirm
 				let shops = this.user.cart;
 				this.order.shopList = shops.filter(function(item) {
@@ -47,7 +46,6 @@ require(["config"],()=>{
 				this.user.address.forEach(function(item,index){
 					address.push(item.split(','))
 				})
-				console.log(address);
 				if(address.length>0){
 					$("#showAll").show();
 					let html = `
@@ -212,6 +210,10 @@ require(["config"],()=>{
 					let time = year +"-"+ month +"-"+ day + " "+h+":"+m;
 					_this.order.time = time;
 
+					if(!_this.order.address){
+						alert("请完善地址信息！");
+						return;
+					}
 					
 					// 为用户添加当前订单
 					_this.user.order.push(_this.order);

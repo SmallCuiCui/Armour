@@ -183,7 +183,8 @@ require(["config"],()=>{
 						$(this).parents("ol").find('li:nth-child(3) p span').html(birthday);
 						// 隐藏修改区
 						$(this).parents("ol").find("li>div").hide();
-						$(this).parents("ol").find("li>p>span").hide();
+						// 隐藏原有数据
+						$(this).parents("ol").find("li>p>span").show();
 						// 显示点击按钮
 						$(this).parents("ol").find("li:last-child").show();
 					}

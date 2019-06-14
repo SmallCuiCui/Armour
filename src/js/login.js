@@ -81,7 +81,7 @@ require(["config"],() =>{
 
 								// 初始化用户数据，包括个人信息(对象)，购物车(对象数组)，订单(对象数组)，地址(对象数组)
 								let userNew = {
-									info:{'psw':psw,'phone':user,'name':"",'sex':"",'birthday':""},
+									info:{'psw':psw,'phone':user,'name':"",'sex':"",'birthday':"",'email':""},
 									cart:[],
 									order:[],
 									address:[]
