@@ -49,7 +49,6 @@ require(["config"], () =>{
 				lunbo.render(this.data.bannerImg);
 
 				//渲染主体内容
-				
 				this.people = people;
 				this.people.render(this.data);
 			}

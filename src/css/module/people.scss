@@ -1,5 +1,7 @@
 
+// 推荐商品样式
 .recommand{
+	padding:0 10px;
 	overflow:hidden;
 	h4{
 		font-size:36px;
@@ -9,20 +11,40 @@
 	}
 
 
-	div{
-		display:flex;
+	>div{
+		// display:flex;
+		position:relative;
+		padding:0 50px;
+		overflow:hidden;
 		.leftBtn,.rightBtn{
 			width:50px;
+			position:absolute;
+			top:0;
+			text-align:center;
+			font-size:80px;
+			color:#c7c7c7;
 			line-height:290px;
+			height:320px;
+			cursor:pointer;
+			background-color:white;
+			z-index:1;
+		}
+		.leftBtn{
+			left:0;
+		}
+		.rightBtn{
+			right:0;
 		}
 
 		.showWrap{
-			flex:1;
-			display:flex;
-			justify-content:space-between;
+			white-space:nowrap;
+			position:relative;
+			// transition:all 0.5s;
 			dl{
-				width:23%;
-
+				width:24%;
+				margin-left:0.25%;
+				display:inline-block;
+				vertical-align:top;
 				dt{//高度按照图片比例撑大
 					a{
 						display:block;
@@ -31,12 +53,17 @@
 						margin-bottom:10px;
 						img{
 							width:100%;
+							&:hover{
+							// width:90%;
+							box-shadow: 0 0 10px #333333;
+						}
 						}
 					}
 				}
 				
 				dd{
 					text-align:center;
+					white-space:normal;
 					font-size:18px;
 					color:#1d1d1d;
 					line-height:22px;

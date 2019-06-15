@@ -6,7 +6,7 @@ require(["config"],()=>{
 		class Newlist{
 			constructor(){
 
-				this.render("all");
+				this.render();
 				this.bindEvents();
 
 				//初始化一个空的条件数组,存放筛选条件
@@ -25,21 +25,7 @@ require(["config"],()=>{
 
 				//渲染条件
 				this.renderCondition();
-			}/*
-			getData(){
-				$.ajax({
-					url:url.baseListUrl + 'hotList',
-					type:"get",
-					dataType:"json",
-					success:data =>{
-
-						if(data.res_code == 1){
-							this.list = data.res_body.list;
-							
-						}
-					}
-				})
-			}*/
+			}
 			renderShop(condition){
 				// 价格由低到高排序
 				if(condition === "lowPrice"){

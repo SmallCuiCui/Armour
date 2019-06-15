@@ -17,6 +17,7 @@ require(["config"],() =>{
 				this.inputUser.blur( () =>{
 					this.regUser();
 				});
+				// 密码失去焦点时验证密码格式
 				this.inputPsw.blur(()=>{
 					this.regPsw();
 				});
@@ -81,12 +82,18 @@ require(["config"],() =>{
 
 								// 初始化用户数据，包括个人信息(对象)，购物车(对象数组)，订单(对象数组)，地址(对象数组)
 								let userNew = {
-									info:{'psw':psw,'phone':user,'name':"",'sex':"",'birthday':"",'email':""},
+									info:{'psw':psw,'phone':"",'email':"",'name':"",'sex':"",'birthday':""},
 									cart:[],
 									order:[],
 									address:[]
 								}
 
+								// 使用电话号码登录
+								if((/^1(3|4|5|7|8)\d{9}$/.test(user))){
+									userNew.info.phone = user;
+								}else{//邮箱登录
+									userNew.info.phone = user;
+								}
 								localStorage.setItem('user',JSON.stringify(userNew));
 
 								alert("登录成功，即将跳转首页！");
