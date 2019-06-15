@@ -7,6 +7,7 @@ require.config({
 		"people":"js/module/people",
 		"shopDis":"js/module/shopDis",
 		"tools":"libs/tools",
+		"bootstrap":"libs/bootstrap/js/bootstrap.min",
 		"url":"js/module/url",
 		"jquery":"libs/jquery/jquery-3.2.1",
 		"template":"libs/art-template/template-web",
@@ -28,6 +29,9 @@ require.config({
 		},
 		"fly" : {
 			deps: ['jquery']
+		},
+		'bootstrap':{
+			deps:['jquery']
 		}
 	}
 })

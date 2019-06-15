@@ -6,7 +6,9 @@
 	<title>新品推荐</title>
 
 	<link rel="stylesheet" type="text/css" href="/libs/font/iconfont.css">
+	<!-- <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="/css/newRcom.css">
+
 </head>
 <body>
 	<header></header>
@@ -119,6 +121,28 @@
 		{{/each}}
 	</script>
 	
+	<!-- 分页导航 -->
+	<div class="pgNavWrap">
+		<ul class="pagination">
+		  	
+		    <li class="Previous">
+		      <a href="javascript:;">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+
+		    <!-- <li class="pageLi ac"><a href="javascript:;">1</a></li>
+		    <li class="pageLi"><a href="javascript:;">2</a></li> -->
+
+		    <li class="Next">
+		      <a href="javascript:;">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+
+		  </ul>
+	</div>
+	<div class="nodata"></div>
 
 	<footer></footer>
 	<script src="/libs/require/require.min.js" data-main="/js/newRcom.js"></script>

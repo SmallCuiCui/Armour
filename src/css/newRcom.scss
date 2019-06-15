@@ -138,3 +138,40 @@
 	}
 }
 
+// 分页导航样式
+.pgNavWrap{
+	display:none;
+	margin:auto;
+	.pagination{
+
+		margin:20px 500px;
+		// display:flex;
+		display:inline-block;
+		overflow:hidden;
+		li{
+			float:left;
+			height:34px;
+			line-height:34px;
+			width:34px;
+			text-align:center;
+			background-color:white;
+			border:1px solid #ddd;
+			a{
+				color:#337ab7;
+			}
+			&.ac{
+				background-color:#eeeeee;
+			}
+		}
+
+	}
+}
+
+.nodata{
+	text-align:center;
+	font-size:14px;
+	color:#666666;
+	margin:20px;
+}
+
+
