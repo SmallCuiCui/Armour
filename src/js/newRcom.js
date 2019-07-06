@@ -235,22 +235,22 @@ require(["config"],()=>{
 				//页面可视区域高度
 				var winH = $(window).height(); 
 				$(window).scroll(()=>{
-					// console.log(this.selectList);
+					// 内容高度
 					var pageH = $(document.body).height();
-					//滚动条top  
-                    var scrollT = $(window).scrollTop(); 
+					//滚动条位置
+                    var scrollT = $(window).scrollTop();
+
+                    console.log(winH,pageH,scrollT);
                     var aa = (pageH - winH - scrollT) / winH;
                      if (aa < 0.02) {
-                     	setTimeout(()=>{
-                     		this.count += 20;
-                     	},500)
+                     	console.log(this.count);
+
+                     	this.count += 20;
                      	
                      	if(this.count > this.selectList.length){
                      		this.count = this.selectList.length;
-                     		setTimeout(()=>{
-                     			this.renderByMove();
-                     			$(".nodata").show().html("别滚动了，我是有底线的。。。");
-                     		},500)
+                     		this.renderByMove();
+                     		$(".nodata").show().html("别再滚了，我是有底线的。。。");
                      	}else{
                      		$(".nodata").show().html("加载中。。。"); 
                      		setTimeout(()=>{
